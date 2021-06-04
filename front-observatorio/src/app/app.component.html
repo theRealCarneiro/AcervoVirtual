@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row-md-12">
+      <img class="rounded mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho">
+  </div>
+</div>
+<mat-toolbar>
+  
+  <mat-toolbar-row>
+    <!-- aqui tem que centralizar-->
+    <!-- <div layout="row" layout-align="center center"> -->
+      <a mat-button [routerLink]="'/acervo'"> Acervo </a>
+      <a mat-button [routerLink]="'/admin'"> Administrador </a>
+    
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class = "container-fluid">
+  <router-outlet></router-outlet>
+</div>

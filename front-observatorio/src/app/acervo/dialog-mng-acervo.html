@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Detalhes do trabalho {{data.titulo}}</h1>
+
+<h3><b>Titulo: </b> {{data.titulo}}</h3>
+<h3><b>Autor: </b> {{data.autor}}</h3>
+<h3><b>Gênero Documental: </b> {{data.genero_documental}}</h3>
+<h3><b>Tipo de documento: </b> {{data.tipo}}</h3>
+<h3><b>Apresentação gráfica: </b> {{data.apresentacao_grafica}}</h3>
+<h3><b>Área de conhecimento: </b> {{data.area}}</h3>
+<h3><b>Palavras-Chaves / Assunto: </b>{{data.keyword}}</h3>
+<h3><b>Data de produção: </b> {{data.data_producao}}</h3>
+<h3><b>Local de produção: </b> {{data.data_topica}}</h3>
+<h3><b>Ambito e Conteúdo: </b> {{data.ambito}}</h3>
+<h3><b>Notas gerais: </b> {{data.notas}}</h3>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Fechar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Donwload</button>
+</div> 

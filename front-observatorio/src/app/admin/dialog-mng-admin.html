@@ -1,0 +1,109 @@
+<h1 mat-dialog-title>Inserir novo trabalho</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Titulo</mat-label>
+        <input matInput [(ngModel)]="data.titulo">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Autor</mat-label>
+        <input matInput [(ngModel)]="data.autor">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Genero Documental</mat-label>
+        <input matInput [(ngModel)]="data.genero_documental">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Tipo de documento</mat-label>
+        <input matInput [(ngModel)]="data.tipo">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Apresentacao Gráfica</mat-label>
+        <input matInput [(ngModel)]="data.apresentacao_grafica">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Área de conhecimento</mat-label>
+        <input matInput [(ngModel)]="data.area">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Palavras-Chaves / Assunto</mat-label>
+        <input matInput [(ngModel)]="data.keyword">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Data de produção</mat-label>
+        <input matInput [(ngModel)]="data.data_producao">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Local de produção</mat-label>
+        <input matInput [(ngModel)]="data.data_topica">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Ambito e Conteúdo</mat-label>
+        <input matInput [(ngModel)]="data.ambito">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Notas gerais</mat-label>
+        <input matInput [(ngModel)]="data.notas">
+      </mat-form-field>
+    </div>
+  </div>
+  
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Salvar</button>
+</div> 
+
+
+  
