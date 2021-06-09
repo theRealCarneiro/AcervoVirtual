@@ -9,7 +9,7 @@ import { Acervo } from './acervo/acervo.component';
 export class AcervoService {
 
   constructor(private http: HttpClient) {}
-
+    //
     getTrabalhos(): Observable<Acervo[]> {
 
       return this.http.get<Acervo[]>("http://localhost:3000/acervo");
