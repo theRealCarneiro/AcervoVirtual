@@ -12,23 +12,23 @@ export class AcervoService {
     //
     getTrabalhos(): Observable<Acervo[]> {
 
-      return this.http.get<Acervo[]>("http://localhost:3000/acervo");
+      return this.http.get<Acervo[]>("http://alice.dcomp.ufsj.edu.br:33001/acervo");
 
     } 
     adicionar(acervo: Acervo): Observable<any> {
-      return this.http.post("http://localhost:3000/administrador", acervo);
+      return this.http.post("http://alice.dcomp.ufsj.edu.br:33001/administrador", acervo);
     }
     
     getTrabalho(id: number): Observable<Acervo> {
       //console.log(acervoId)
-      return this.http.get<Acervo>("http://localhost:3000/administrador/" + id);
+      return this.http.get<Acervo>("http://alice.dcomp.ufsj.edu.br:33001/administrador/" + id);
     }
     editar(acervo: Acervo): Observable<any> {
-      return this.http.patch("http://localhost:3000/administrador/" + acervo.id, acervo);
+      return this.http.patch("http://alice.dcomp.ufsj.edu.br:33001/administrador/" + acervo.id, acervo);
 
     }
     remover(id: number): Observable<any>{
-      return this.http.delete("http://localhost:3000/administrador/" + id);
+      return this.http.delete("http://alice.dcomp.ufsj.edu.br:33001/administrador/" + id);
 
     }
 }
