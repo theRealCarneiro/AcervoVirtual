@@ -1,16 +1,50 @@
 <h1 mat-dialog-title>Detalhes do trabalho</h1>
+<div mat-dialog-content>
+  <div class="row">
+	<h3><b>Titulo: </b> {{data.titulo}}</h3>
+  </div>
 
-<h3><b>Titulo: </b> {{data.titulo}}</h3>
-<h3><b>Autor: </b> {{data.autor}}</h3>
-<h3><b>Gênero Documental: </b> {{data.genero_documental}}</h3>
-<h3><b>Tipo de documento: </b> {{data.tipo}}</h3>
-<h3><b>Apresentação gráfica: </b> {{data.apresentacao_grafica}}</h3>
-<h3><b>Área de conhecimento: </b> {{data.area}}</h3>
-<h3><b>Palavras-Chaves / Assunto: </b>{{data.keyword}}</h3>
-<h3><b>Data de produção: </b> {{data.data_producao}}</h3>
-<h3><b>Local de produção: </b> {{data.data_topica}}</h3>
-<h3><b>Ambito e Conteúdo: </b> {{data.ambito}}</h3>
-<h3><b>Notas gerais: </b> {{data.notas}}</h3>
+  <div class="row">
+	<h3><b>Autor: </b> {{data.autor}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Gênero Documental: </b> {{data.genero_documental}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Tipo de documento: </b> {{data.tipo}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Apresentação gráfica: </b> {{data.apresentacao_grafica}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Área de conhecimento: </b> {{data.area}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Palavras-Chaves / Assunto: </b>{{data.keyword}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Data de produção: </b> {{data.data_producao}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Local de produção: </b> {{data.data_topica}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Ambito e Conteúdo: </b> {{data.ambito}}</h3>
+  </div>
+
+  <div class="row">
+	<h3><b>Notas gerais: </b> {{data.notas}}</h3>
+  </div>
+</div>
+
 
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Fechar</button>
