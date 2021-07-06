@@ -4,8 +4,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 footer {
-    background-color: black;
-    color:white;
-		clear: both;
-		position: relative;
+		background-color: black;
+		color:white;
 }
