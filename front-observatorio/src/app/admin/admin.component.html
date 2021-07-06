@@ -3,7 +3,7 @@
         <h1>Trabalhos</h1>
 		    <div fxLayout fxLayoutAlign="center center">
 					<mat-form-field fxFlex="40%">
-							 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filter">
+							 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
 					</mat-form-field>
 		    </div>
     </div>
@@ -16,9 +16,9 @@
     <div class="col-10">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%">
 
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> id </th>
-                <td mat-cell *matCellDef="let acervo"> {{acervo.id}} </td>
+            <ng-container matColumnDef="id" >
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell style="padding-right:20px" *matCellDef="let acervo"> {{acervo.id}} </td>
             </ng-container>
 
             <ng-container matColumnDef="titulo">
