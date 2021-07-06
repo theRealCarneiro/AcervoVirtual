@@ -17,6 +17,7 @@ export class Acervo{
   apresentacao_grafica!: string;
   ambito!: string;
   notas!: string;
+  link!: string;
 }
 
 @Component({
@@ -25,13 +26,17 @@ export class Acervo{
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  displayedColumns: string[]=['titulo','autor','acoes'];
+  displayedColumns: string[]=['id','titulo','autor','acoes'];
   dataSource = new MatTableDataSource<Acervo>();
-   
+
   constructor(private service: AcervoService, public dialog: MatDialog) { }
 
   ngOnInit(){
     this.service.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
+  }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   openNewDialog(): void{
@@ -40,19 +45,18 @@ export class AdminComponent implements OnInit {
       data: new Acervo()
     });
 
-    //adiciona um novo registro (trabalho) ao acervo
-    dialogRef.afterClosed().subscribe(acervo =>{
-      this.service.adicionar(acervo).subscribe(id =>{
-        //pega o id do novo registro 
-        this.service.getTrabalho(id).subscribe(newTrabalho =>{
-          //concatena ele a lista de trabalhos do front
+    // adiciona um novo registro (trabalho) ao acervo
+    dialogRef.afterClosed().subscribe(acervo => {
+      this.service.adicionar(acervo).subscribe(id => {
+        // pega o id do novo registro
+        this.service.getTrabalho(id).subscribe(newTrabalho => {
+          // concatena ele a lista de trabalhos do front
           this.dataSource.data = this.dataSource.data.concat(newTrabalho);
         });
       });
-    })
+    });
   }
 
-  
 
   openEditDialog(acervo: Acervo): void{
     const dialogRef = this.dialog.open(MngAdminDialog, {
@@ -60,16 +64,16 @@ export class AdminComponent implements OnInit {
       data: acervo
     });
 
-    //adiciona um novo registro (trabalho) ao acervo
-    dialogRef.afterClosed().subscribe(acervo =>{
-      this.service.editar(acervo).subscribe(_ =>{
+    // adiciona um novo registro (trabalho) ao acervo
+    dialogRef.afterClosed().subscribe(acervo => {
+      this.service.editar(acervo).subscribe(_ => {
         //altera todas os objetos se a condicao for satisfeita
         //se o id existe, substitua
-        this.dataSource.data = this.dataSource.data.map(oldAcervo =>{
+        this.dataSource.data = this.dataSource.data.map(oldAcervo => {
           if(oldAcervo.id == acervo.id) return acervo;
-        })
+        });
       });
-    })
+    });
   }
 
   exluir(acervo:Acervo):void {

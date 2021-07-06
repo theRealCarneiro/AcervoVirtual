@@ -43,10 +43,11 @@
   <div class="row">
 	<h3><b>Notas gerais: </b> {{data.notas}}</h3>
   </div>
+
 </div>
 
 
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Fechar</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Donwload</button>
+  <button mat-button (click)="download()">Download</button>
 </div> 
