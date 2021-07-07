@@ -7,18 +7,20 @@ import { AcervoService } from '../acervo.service';
 
 export class Acervo{
   id!: number;
-  area!: string;
   titulo!: string;
   autor!: string;
-  tipo!: string;
-  keyword!: string;
-  data_producao!: string;
-  data_topica!: string; // local de producao
-  genero_documental!: string;
-  tipo_documental!: string;
-  apresentacao_grafica!: string;
+  generoDocumental!: string;
+  tipoDocumental!: string;
+  apresentacaoGrafica!: string;
+  area!: string;
+  assunto!: string;
+  dataProducao!: string;
+  instituicao!: string;
   ambito!: string;
-  notas!: string;
+  orientador!: string;
+  recorteTemporal!: string;
+  recorteEspacial!: string;
+  local!: string;
   link!: string;
 }
 
