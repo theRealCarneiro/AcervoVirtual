@@ -32,20 +32,20 @@ class AcervoService {
     }
     //
     getTrabalhos() {
-        return this.http.get("http://localhost:33001/acervo");
+        return this.http.get("http://alice.dcomp.ufsj.edu.br:33001/acervo");
     }
     adicionar(acervo) {
-        return this.http.post("http://localhost:33001/administrador", acervo);
+        return this.http.post("http://alice.dcomp.ufsj.edu.br:33001/administrador", acervo);
     }
     getTrabalho(id) {
         //console.log(acervoId)
-        return this.http.get("http://localhost:33001/administrador/" + id);
+        return this.http.get("http://alice.dcomp.ufsj.edu.br:33001/administrador/" + id);
     }
     editar(acervo) {
-        return this.http.patch("http://localhost:33001/administrador/" + acervo.id, acervo);
+        return this.http.patch("http://alice.dcomp.ufsj.edu.br:33001/administrador/" + acervo.id, acervo);
     }
     remover(id) {
-        return this.http.delete("http://localhost:33001/administrador/" + id);
+        return this.http.delete("http://alice.dcomp.ufsj.edu.br:33001/administrador/" + id);
     }
 }
 AcervoService.ɵfac = function AcervoService_Factory(t) { return new (t || AcervoService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
