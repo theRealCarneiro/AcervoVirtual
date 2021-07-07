@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+
 
 import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
 import { AdminComponent, MngAdminDialog } from './admin/admin.component';
@@ -38,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule, 
+		MatSortModule,
     FormsModule,
   ],
   entryComponents:[

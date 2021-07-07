@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatSort } from '@angular/material/sort';
 import { AcervoService } from '../acervo.service';
 
 export class Acervo{
@@ -30,14 +31,20 @@ export class Acervo{
   styleUrls: ['./acervo.component.css']
 })
 
-export class AcervoComponent implements OnInit {  
+export class AcervoComponent implements OnInit, AfterViewInit {  
   displayedColumns: string[] = ['titulo', 'autor', 'acoes'];
   public dataSource = new MatTableDataSource<Acervo>();
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private service: AcervoService, public dialog: MatDialog) { }
 
   ngOnInit(){
     this.service.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
   }
 
   public doFilter = (value: string) => {
