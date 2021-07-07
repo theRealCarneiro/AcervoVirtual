@@ -29,7 +29,7 @@ export class Acervo{
 })
 
 export class AcervoComponent implements OnInit {  
-  displayedColumns: string[] = ['titulo', 'autor', 'data_producao', 'acoes'];
+  displayedColumns: string[] = ['titulo', 'autor', 'acoes'];
   public dataSource = new MatTableDataSource<Acervo>();
 
   constructor(private service: AcervoService, public dialog: MatDialog) { }

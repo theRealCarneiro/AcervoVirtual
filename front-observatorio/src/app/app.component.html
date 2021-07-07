@@ -3,16 +3,15 @@
       <img class="rounded mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
 
 </div>
-<mat-toolbar>
-  
-  <mat-toolbar-row>
-    <!-- aqui tem que centralizar-->
-    <!-- <div layout="row" layout-align="center center"> -->
-      <a mat-button [routerLink]="'/acervo'"> Acervo </a>
-      <a mat-button [routerLink]="'/admin'"> Administrador </a>
-    
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="text-center" layout="row" layout-align="center center"> 
+      <a class="test" mat-button  [routerLink]="'/'"> Inicio </a>
+      <a class="test" mat-button  [routerLink]="'/acervo'"> Acervo </a>
+      <a class="test" mat-button [routerLink]="'/admin'"> Administrador </a>
+</div>
+<!--<mat-toolbar >-->
+  <!--<mat-toolbar-row>-->
+  <!--</mat-toolbar-row>-->
+<!--</mat-toolbar>-->
 <div class = "container-fluid">
   <router-outlet></router-outlet>
 </div>
