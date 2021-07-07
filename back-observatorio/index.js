@@ -3,18 +3,34 @@ const customExpress = require('./config/customExpress')
 const conexao = require('./infraestrutura/conexao')
 const Tabelas = require('./infraestrutura/tabelas')
 
-conexao.connect(erro =>{
-    if(erro){
-        console.log(erro)
+conexao.query('select 1 + 1', (err, rows) => { 
+    if(err){
+	   console.log(err)
     }else{
-        console.log('conectado no banco de dados com sucesso!')
+	   console.log('conectado no banco de dados com sucesso!')
 
-        //cria tabelas (como um migrate)
-        Tabelas.init(conexao)
+	   //cria tabelas (como um migrate)
+	   Tabelas.init(conexao)
 
-        const app = customExpress()
-        app.listen(33001,()=>{
-            console.log('servidor rodando na porta 33001!')
-        })
+	   const app = customExpress()
+	   app.listen(33001,()=>{
+		  console.log('servidor rodando na porta 33001!')
+	   })
     }
-})
+});
+
+//conexao.connect(erro =>{
+    //if(erro){
+        //console.log(erro)
+    //}else{
+        //console.log('conectado no banco de dados com sucesso!')
+
+        ////cria tabelas (como um migrate)
+        //Tabelas.init(conexao)
+
+        //const app = customExpress()
+        //app.listen(33001,()=>{
+            //console.log('servidor rodando na porta 33001!')
+        //})
+    //}
+//})
