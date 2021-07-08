@@ -3,7 +3,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import {MatMenu} from '@angular/material/menu';
 import { AcervoService } from '../acervo.service';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export class Acervo{
   id!: number;
@@ -32,6 +35,8 @@ export class Acervo{
 export class AdminComponent implements OnInit, AfterViewInit {
   displayedColumns: string[]=['id','titulo','autor','acoes'];
   dataSource = new MatTableDataSource<Acervo>();
+  faMenu = faEllipsisV;
+  faAdd = faPlus;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

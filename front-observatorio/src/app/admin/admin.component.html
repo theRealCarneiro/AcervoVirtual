@@ -5,7 +5,8 @@
 			<mat-form-field fxFlex="40%">
 				 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
 			</mat-form-field>
-		<button mat-stroked-button class="float-right" color="primary" (click)="openNewDialog()">Adicionar</button>
+
+			<mat-paginator class="float-right" [pageSize]="20" [pageSizeOptions]="[20, 40, 60, 100, 200]">	</mat-paginator>
 	    </div>
 	</div>
 
@@ -14,34 +15,42 @@
 <div class="row justify-content-md-center">
     <div class="col-10">
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%" matSort>
+		<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%" matSort>
 
-            <ng-container matColumnDef="id" >
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell style="padding-right:20px" *matCellDef="let acervo"> {{acervo.id}} </td>
-            </ng-container>
+			<ng-container matColumnDef="id" >
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+				<td mat-cell style="padding-right:20px" *matCellDef="let acervo"> {{acervo.id}} </td>
+			</ng-container>
 
-            <ng-container matColumnDef="titulo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
-                <td mat-cell *matCellDef="let acervo"> {{acervo.titulo}} </td>
-            </ng-container>
+			<ng-container matColumnDef="titulo">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+				<td mat-cell style="padding-right:20px" *matCellDef="let acervo"> {{acervo.titulo}} </td>
+			</ng-container>
         
-            <ng-container matColumnDef="autor">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Autor </th>
-                <td mat-cell *matCellDef="let acervo"> {{acervo.autor}} </td>
-            </ng-container>
+			<ng-container matColumnDef="autor">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> Autor </th>
+				<td mat-cell *matCellDef="let acervo"> {{acervo.autor}} </td>
+			</ng-container>
             
-            <ng-container matColumnDef="acoes">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef = "let acervo">
-                    <button type="button" class=" float-right btn btn-danger" (click)="exluir(acervo)">Excluir</button>
-                    <button type="button" class=" float-right btn btn-danger" (click)="openEditDialog(acervo)">Editar</button>                  
-                </td>
-            </ng-container>
+			<ng-container matColumnDef="acoes">
+			<th mat-header-cell *matHeaderCellDef>
+				<button mat-button class="float-right" (click)="openNewDialog()">
+					<fa-icon  [icon]="faAdd" size="1x"></fa-icon>
+				</button>
+			</th>
+			<td mat-cell *matCellDef = "let acervo">
+				<button mat-button [matMenuTriggerFor]="menu">
+					<fa-icon [icon]="faMenu"></fa-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item (click)="openEditDialog(acervo)">Editar</button>
+					<button mat-menu-item (click)="exluir(acervo)">Excluir</button>
+				</mat-menu>
+			</td>
+			</ng-container>
             
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let acervo; columns: displayedColumns;"></tr>
-        </table>
-		<mat-paginator [pageSize]="20" [pageSizeOptions]="[20, 40, 60, 100, 200]">	</mat-paginator>
-    </div>
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let acervo; columns: displayedColumns;"></tr>
+		</table>
+	</div>
 </div>

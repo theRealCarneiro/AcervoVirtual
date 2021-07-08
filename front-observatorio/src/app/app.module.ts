@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatMenuModule } from '@angular/material/menu';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 
 import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
@@ -43,7 +45,9 @@ import { FormsModule } from '@angular/forms';
     MatInputModule, 
 		MatSortModule,
 		MatPaginatorModule,
+		MatMenuModule,
     FormsModule,
+		FontAwesomeModule,
   ],
   entryComponents:[
     MatDialogModule
