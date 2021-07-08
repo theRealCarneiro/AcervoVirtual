@@ -6,7 +6,6 @@
 				 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
 			</mat-form-field>
 
-			<mat-paginator class="float-right" [pageSize]="20" [pageSizeOptions]="[20, 40, 60, 100, 200]">	</mat-paginator>
 	    </div>
 	</div>
 </div>
@@ -56,5 +55,6 @@
 			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 			<tr mat-row *matRowDef="let acervo; columns: displayedColumns;"></tr>
 		</table>
+		<mat-paginator class="float-right" [pageSize]="20" [pageSizeOptions]="[20, 40, 60, 100, 200]">	</mat-paginator>
 	</div>
 </div>

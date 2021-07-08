@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { AcervoService } from '../acervo.service';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 export class Acervo{
   id!: number;
@@ -34,10 +34,10 @@ export class Acervo{
 })
 
 export class AcervoComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['titulo', 'autor'];
+  displayedColumns: string[] = ['titulo', 'autor', 'acoes'];
   public dataSource = new MatTableDataSource<Acervo>();
 
-  faMenu = faEllipsisH;
+  faMenu = faEllipsisV;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -61,6 +61,10 @@ export class AcervoComponent implements OnInit, AfterViewInit {
 
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  download(acervo: Acervo): void{
+    window.open(acervo.link);
   }
 
 
