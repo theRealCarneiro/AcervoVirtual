@@ -33,21 +33,21 @@ export class Acervo{
   styleUrls: ['./acervo.component.css']
 })
 
-export class AcervoComponent implements OnInit, AfterViewInit {  
-  displayedColumns: string[] = ['titulo', 'autor', 'acoes'];
+export class AcervoComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['titulo', 'autor'];
   public dataSource = new MatTableDataSource<Acervo>();
 
   faMenu = faEllipsisH;
 
   @ViewChild(MatSort) sort: MatSort;
-	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-	constructor(private service: AcervoService, public dialog: MatDialog) { }
+  constructor(private service: AcervoService, public dialog: MatDialog) { }
 
   ngOnInit(){
     this.service.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
 
-		this.paginator._intl.itemsPerPageLabel="Itens por página";
+    this.paginator._intl.itemsPerPageLabel="Itens por página";
     this.paginator._intl.nextPageLabel = 'Próxima página';
     this.paginator._intl.previousPageLabel = 'Página Anterior';
     this.paginator._intl.firstPageLabel = 'Primeira página';
@@ -69,8 +69,6 @@ openViewDialog(acervo: Acervo): void{
       width: '750px',
       data: acervo
     });
-
-    
   }
 }
 
@@ -81,8 +79,8 @@ openViewDialog(acervo: Acervo): void{
   templateUrl: 'dialog-mng-acervo.html'
 })
 
-export class MngAcervoDialog{
-  constructor ( public dialogRef: MatDialogRef<MngAcervoDialog>, 
+export class MngAcervoDialog {
+  constructor (public dialogRef: MatDialogRef<MngAcervoDialog>, 
   @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
 
   download(): void{

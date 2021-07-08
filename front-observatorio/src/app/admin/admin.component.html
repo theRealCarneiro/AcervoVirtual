@@ -9,13 +9,17 @@
 			<mat-paginator class="float-right" [pageSize]="20" [pageSizeOptions]="[20, 40, 60, 100, 200]">	</mat-paginator>
 	    </div>
 	</div>
-
 </div>
 
 <div class="row justify-content-md-center">
     <div class="col-10">
 
 		<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%" matSort>
+			<tr class="mat-row" *matNoDataRow>
+				<td class="mat-cell" colspan="9999">
+					Nehuma corresponência
+				</td>
+			</tr>
 
 			<ng-container matColumnDef="id" >
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
