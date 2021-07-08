@@ -1,19 +1,19 @@
 <div class="row justify-content-md-center mt-5">
-    <div class="col-8 align-self-center">
-        <h1>Trabalhos</h1>
-		    <div fxLayout fxLayoutAlign="center center">
-					<mat-form-field fxFlex="40%">
-							 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
-					</mat-form-field>
-		    </div>
-    </div>
-    <div class="col-2 align-self-center">
-        <button mat-stroked-button class="float-right" color="primary" (click)="openNewDialog()">Adicionar</button>
-    </div>    
+	<div class="col-10 align-self-center">
+		<h1>Trabalhos</h1>
+		<div fxLayout="row" fxLayoutAlign="space-between center" fxLayout fxLayoutAlign="start center">
+			<mat-form-field fxFlex="40%">
+				 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
+			</mat-form-field>
+		<button mat-stroked-button class="float-right" color="primary" (click)="openNewDialog()">Adicionar</button>
+	    </div>
+	</div>
+
 </div>
 
 <div class="row justify-content-md-center">
     <div class="col-10">
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%" matSort>
 
             <ng-container matColumnDef="id" >
@@ -42,5 +42,6 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let acervo; columns: displayedColumns;"></tr>
         </table>
+		<mat-paginator [pageSize]="20" [pageSizeOptions]="[20, 40, 60, 100, 200]">	</mat-paginator>
     </div>
 </div>

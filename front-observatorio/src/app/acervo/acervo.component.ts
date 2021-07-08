@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { AcervoService } from '../acervo.service';
 
 export class Acervo{
@@ -36,15 +37,23 @@ export class AcervoComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<Acervo>();
 
   @ViewChild(MatSort) sort: MatSort;
+	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private service: AcervoService, public dialog: MatDialog) { }
+	constructor(private service: AcervoService, public dialog: MatDialog) { }
 
   ngOnInit(){
     this.service.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
+
+		this.paginator._intl.itemsPerPageLabel="Itens por página";
+    this.paginator._intl.nextPageLabel = 'Próxima página';
+    this.paginator._intl.previousPageLabel = 'Página Anterior';
+    this.paginator._intl.firstPageLabel = 'Primeira página';
+    this.paginator._intl.lastPageLabel = 'Última página';
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   public doFilter = (value: string) => {

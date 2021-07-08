@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule, 
 		MatSortModule,
+		MatPaginatorModule,
     FormsModule,
   ],
   entryComponents:[
