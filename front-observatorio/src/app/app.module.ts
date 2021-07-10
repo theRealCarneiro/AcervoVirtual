@@ -15,6 +15,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 
@@ -43,11 +45,12 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule, 
-		MatSortModule,
-		MatPaginatorModule,
-		MatMenuModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatTooltipModule,
     FormsModule,
-		FontAwesomeModule,
+    FontAwesomeModule,
   ],
   entryComponents:[
     MatDialogModule

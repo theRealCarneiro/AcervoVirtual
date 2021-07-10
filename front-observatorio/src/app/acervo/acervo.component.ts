@@ -5,8 +5,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTooltip } from '@angular/material/tooltip';
 import { AcervoService } from '../acervo.service';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export class Acervo{
   id!: number;
@@ -38,6 +41,8 @@ export class AcervoComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<Acervo>();
 
   faMenu = faEllipsisV;
+  faDownload = faDownload;
+  faQuestionCircle = faQuestionCircle;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -80,12 +85,35 @@ openViewDialog(acervo: Acervo): void{
 
 @Component({
   selector: 'dialog-mng-acervo',
-  templateUrl: 'dialog-mng-acervo.html'
+  templateUrl: 'dialog-mng-acervo.html',
+  styleUrls: ['./dialog-mng-acervo.css']
 })
 
-export class MngAcervoDialog {
+export class MngAcervoDialog implements OnInit {
   constructor (public dialogRef: MatDialogRef<MngAcervoDialog>, 
   @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
+  public orientador = true;
+  public recorteTemporal = true;
+  public recorteEspacial = true;
+  public local = true;
+
+  ngOnInit(){
+	  if(this.data.orientador == "-"){
+	    this.orientador = false;
+    }
+
+	  if(this.data.recorteTemporal == "-"){
+	    this.recorteTemporal = false;
+    }
+
+	  if(this.data.recorteEspacial == "-"){
+	    this.recorteEspacial = false;
+    }
+
+	  if(this.data.local == "-"){
+	    this.local = false;
+    }
+  }
 
   download(): void{
     window.open(this.data.link);

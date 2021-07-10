@@ -1,15 +1,15 @@
 <div>
-      <img class="rounded mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
+  <img class="rounded mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
 </div>
-<div class="text-center" layout="row" layout-align="center center"> 
-      <a class="toolbar" mat-button [routerLink]="'/'"> Inicio </a>
+<mat-toolbar >
+  <mat-toolbar-row>
+    <span style="margin: auto"></span>
+	 <a class="toolbar" mat-button [routerLink]="'/'"> Inicio </a>
       <a class="toolbar" mat-button [routerLink]="'/acervo'"> Acervo </a>
       <a class="toolbar" mat-button [routerLink]="'/admin'"> Administrador </a>
-</div>
-<!--<mat-toolbar >-->
-  <!--<mat-toolbar-row>-->
-  <!--</mat-toolbar-row>-->
-<!--</mat-toolbar>-->
+    <span style="margin: auto"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class = "container-fluid">
   <router-outlet></router-outlet>
 </div>

@@ -41,7 +41,15 @@
   </div>
 
   <div class="row">
-	  <h3><b>Nota Gerais: </b> Orientador: {{data.orientador}}, Recorte Temporal: {{data.recorteTemporal}}, Recorte Espacial: {{data.recorteEspacial}}, Local/Bairro: {{data.local}}</h3>
+    <h3>
+	 <p>
+	   <b>Nota Gerais: </b> 
+	   <strong class="notas-gerais" *ngIf="orientador">Orientador: {{data.orientador}} &nbsp;&nbsp;</strong>
+	   <strong class="notas-gerais" *ngIf="recorteTemporal">Recorte Temporal: {{data.recorteTemporal}} &nbsp;&nbsp;</strong>
+	   <strong class="notas-gerais" *ngIf="recorteEspacial">Recorte Espacial: {{data.recorteEspacial}} &nbsp;&nbsp;</strong>
+	   <strong class="notas-gerais" *ngIf="local">Local/Bairro: {{data.local}}</strong>
+	 </p>
+    </h3>
   </div>
 
 </div>

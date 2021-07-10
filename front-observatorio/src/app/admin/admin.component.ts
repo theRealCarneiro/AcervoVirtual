@@ -3,10 +3,13 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import {MatMenu} from '@angular/material/menu';
+import { MatMenu } from '@angular/material/menu';
+import { MatTooltip } from '@angular/material/tooltip';
 import { AcervoService } from '../acervo.service';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export class Acervo{
   id!: number;
@@ -35,8 +38,14 @@ export class Acervo{
 export class AdminComponent implements OnInit, AfterViewInit {
   displayedColumns: string[]=['id','titulo','autor','acoes'];
   dataSource = new MatTableDataSource<Acervo>();
+
+  public tipo: string;
+
+  // Font Awesome
   faMenu = faEllipsisV;
   faAdd = faPlus;
+  faTrash = faTrashAlt;
+  faQuestionCircle = faQuestionCircle;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -68,6 +77,8 @@ export class AdminComponent implements OnInit, AfterViewInit {
       data: new Acervo()
     });
 
+    dialogRef.componentInstance.tipo_dialogo = "Inserir";
+
     // adiciona um novo registro (trabalho) ao acervo
     dialogRef.afterClosed().subscribe(acervo => {
       this.service.adicionar(acervo).subscribe(id => {
@@ -82,10 +93,13 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
 
   openEditDialog(acervo: Acervo): void{
+    //public tipo_dialogo = "Editar"
     const dialogRef = this.dialog.open(MngAdminDialog, {
       width: '750px',
       data: acervo
     });
+
+    dialogRef.componentInstance.tipo_dialogo = "Editar";
 
     // adiciona um novo registro (trabalho) ao acervo
     dialogRef.afterClosed().subscribe(acervo => {
@@ -99,11 +113,12 @@ export class AdminComponent implements OnInit, AfterViewInit {
     });
   }
 
-  exluir(acervo:Acervo):void {
-    this.service.remover(acervo.id).subscribe(_ =>{
-      this.dataSource.data = this.dataSource.data.filter(oldAcervo => oldAcervo.id != acervo.id);
-    })
-
+  excluir(acervo:Acervo):void {
+    if(confirm("Quer mesmo deletar este documento?"+name)) {
+	 this.service.remover(acervo.id).subscribe(_ =>{
+	   this.dataSource.data = this.dataSource.data.filter(oldAcervo => oldAcervo.id != acervo.id);
+	 })
+    }
   }
 }
 
@@ -113,6 +128,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
 })
 
 export class MngAdminDialog{
+  public tipo_dialogo: string;
   constructor ( public dialogRef: MatDialogRef<MngAdminDialog>, 
   @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
 

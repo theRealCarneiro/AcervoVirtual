@@ -6,3 +6,21 @@
 .cell-autor {
 	cursor: pointer;
 }
+
+.cell-acoes {
+	padding-left:15px
+}
+
+.download-button {
+	color: #0e8ef1;
+}
+
+.help {
+	cursor: pointer;
+     margin-top: 100px;
+     padding-left: 10px; 
+}
+
+.mat-tooltip {
+     font-size: 12px;
+}
