@@ -22,17 +22,17 @@
 
 			<ng-container matColumnDef="id" >
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-				<td mat-cell style="padding-right:20px" *matCellDef="let acervo"> {{acervo.id}} </td>
+				<td class="cell-id" mat-cell *matCellDef="let acervo" (click)="openEditDialog(acervo)"> {{acervo.id}} </td>
 			</ng-container>
 
 			<ng-container matColumnDef="titulo">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
-				<td mat-cell style="padding-right:20px" *matCellDef="let acervo"> {{acervo.titulo}} </td>
+				<td class="cell-titulo" mat-cell *matCellDef="let acervo" (click)="openEditDialog(acervo)"> {{acervo.titulo}} </td>
 			</ng-container>
         
 			<ng-container matColumnDef="autor">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Autor </th>
-				<td mat-cell *matCellDef="let acervo"> {{acervo.autor}} </td>
+				<td class="cell-autor" mat-cell *matCellDef="let acervo" (click)="openEditDialog(acervo)"> {{acervo.autor}} </td>
 			</ng-container>
             
 			<ng-container matColumnDef="acoes">

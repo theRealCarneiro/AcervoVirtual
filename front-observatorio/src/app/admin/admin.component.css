@@ -1,0 +1,8 @@
+.cell-id,.cell-titulo {
+	cursor: pointer;
+	padding-right:20px
+}
+
+.cell-autor {
+	cursor: pointer;
+}
