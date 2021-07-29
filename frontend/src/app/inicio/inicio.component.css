@@ -1,0 +1,13 @@
+.t {
+	display: flex;
+	align-items: center;
+	/*height: 100vh;*/
+}
+
+.p{
+  /*width: 40vh;*/
+  /*height: 40vh;*/
+  /*background-color: #ced9d5;*/
+	display: flex;
+  margin: 0 auto;
+}
