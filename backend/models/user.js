@@ -9,13 +9,13 @@ class User{
        
         conexao.query(sql, user,(erro, resultados) => { 
 			if(resultados.length == 0 || erro) { 
-				res.status(401).json({success: false})
+				res.status(401).json({success: false, token: null})
 			} 
 			else {
 				//testa se a senha é válida
 				bcrypt.compare(password, resultados[0].password, function(erro, result) { 
 					if (erro || result == false){
-						res.status(401).json({success: false})
+						res.status(401).json({success: false, token: null})
 					}
 					else{
 						console.log(user, 'logado com sucesso')
@@ -29,7 +29,7 @@ class User{
 						res.cookie("id", token, {
 							httpOnly:true, 
 						});
-						res.status(200).json({success: true})
+						res.status(200).json({success: true, token: token})
 					} 
 				});
 			}
@@ -37,7 +37,7 @@ class User{
 	}
 
 	verifyToken(token, res){
-		console.log(token)
+		//console.log(token)
 		jwt.verify(token, process.env.SECRET, function(err, decoded) {
 			if (err) {
 				console.log(err)

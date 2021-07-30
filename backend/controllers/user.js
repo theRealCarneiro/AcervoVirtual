@@ -12,17 +12,10 @@ module.exports = app =>{
 		User.login(user, password, res)      
     })
 
-    app.get('/auth', (req, res)=>{
-		const token = req.cookies.id
+    app.post('/auth', (req, res)=>{
+		const token = req.body.id
 
 		User.verifyToken(token, res)
-    })
-
-    app.get('/loggout', (req, res)=>{
-		res.cookie("id", null, {
-			httpOnly:true, 
-		});
-		res.status(200).json({success: true})
     })
 
 	app.post('/rg', (req, res)=>{
