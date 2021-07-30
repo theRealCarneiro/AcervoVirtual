@@ -18,6 +18,7 @@ class User{
 						res.status(401).json({success: false})
 					}
 					else{
+						console.log(user, 'logado com sucesso')
 						let token = jwt.sign({ 
 							user: user, 
 							password: password },
@@ -40,7 +41,7 @@ class User{
 				return res.json({success: false})
 			}
 			res.status(200).json({success: true})
-			
+			console.log('autenticado com sucesso')
 		})
 	}
 
