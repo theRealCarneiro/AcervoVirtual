@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
 		this.auth.getUserDetails(username, password).subscribe(data => {
 			if(data.success){
+				localStorage.setItem('id', data.token);
 				this.route.navigate(['/admin']);
 			}
 		});

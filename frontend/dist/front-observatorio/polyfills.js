@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/gabriel/Bibliotecas/Projects/OU/observatorio-urbano/frontend/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /home/gabriel/Bibliotecas/Projects/OU/ObservatorioUrbanoSaoJoaoDelRei/frontend/src/polyfills.ts */"hN/g");
 
 
 /***/ }),

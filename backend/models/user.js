@@ -22,7 +22,7 @@ class User{
 							user: user, 
 							password: password },
 							process.env.SECRET, {
-								expiresIn: 60 // expires in 5min
+								expiresIn: 60 // time to live em segundos
 						});
 						res.status(200).json({success: true, token: token})
 					} 

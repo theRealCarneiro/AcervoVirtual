@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 export interface UserStatus {
 	success: boolean
+	token: string
 }
 
 @Injectable({
@@ -12,7 +13,6 @@ export class AuthService {
 
 	host: string = 'http://alice.dcomp.ufsj.edu.br:33001';
 
-
   constructor(private http: HttpClient) { }
 
 	loggout(){
@@ -20,7 +20,8 @@ export class AuthService {
 	}
 
 	getLoggedStatus(){
-		return this.http.get<UserStatus>(this.host + '/auth');
+		const id = localStorage.getItem('id');
+		return this.http.post<UserStatus>(this.host + '/auth', {id});
 	}
 
   getUserDetails(user: string, password: string){
