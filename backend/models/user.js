@@ -15,7 +15,6 @@ class User{
 				//testa se a senha é válida
 				bcrypt.compare(password, resultados[0].password, function(erro, result) { 
 					if (erro || result == false){
-						console.log('test')
 						res.status(401).json({success: false})
 					}
 					else{
@@ -25,7 +24,6 @@ class User{
 							process.env.SECRET, {
 								expiresIn: 60 // expires in 5min
 						});
-						console.log(token)
 						res.cookie("id", token, {
 							httpOnly:true, 
 						});
@@ -39,7 +37,6 @@ class User{
 	verifyToken(token, res){
 		jwt.verify(token, process.env.SECRET, function(err, decoded) {
 			if (err) {
-				console.log('aff')
 				return res.json({success: false})
 			}
 			res.status(200).json({success: true})
