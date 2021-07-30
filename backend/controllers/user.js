@@ -12,7 +12,7 @@ module.exports = app =>{
 		User.login(user, password, res)      
     })
 
-    app.get('/login', (req, res)=>{
+    app.get('/auth', (req, res)=>{
 		const token = req.cookies.id
 
 		User.verifyToken(token, res)
