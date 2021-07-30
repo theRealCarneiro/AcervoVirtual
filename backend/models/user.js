@@ -38,6 +38,7 @@ class User{
 	verifyToken(token, res){
 		jwt.verify(token, process.env.SECRET, function(err, decoded) {
 			if (err) {
+				console.log(err)
 				return res.json({success: false})
 			}
 			res.status(200).json({success: true})
