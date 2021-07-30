@@ -51,7 +51,7 @@ class User{
 				if (erro){
 					res.status(400).json(erro)
 				}else{
-					res.status(201).json(resultados.insertId)
+					res.status(201).json({success: true})
 				}
 			})
 		});
