@@ -25,6 +25,7 @@ class User{
 							process.env.SECRET, {
 								expiresIn: 60 // expires in 5min
 						});
+						console.log(token)
 						res.cookie("id", token, {
 							httpOnly:true, 
 						});

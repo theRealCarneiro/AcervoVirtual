@@ -10,7 +10,7 @@ export interface UserStatus {
 })
 export class AuthService {
 
-	host: string = '/api';
+	host: string = 'http://alice.dcomp.ufsj.edu.br:33001';
 
 
   constructor(private http: HttpClient) { }
@@ -20,7 +20,7 @@ export class AuthService {
 	}
 
 	getLoggedStatus(){
-		return this.http.get<UserStatus>(this.host + '/login');
+		return this.http.get<UserStatus>(this.host + '/auth');
 	}
 
   getUserDetails(user: string, password: string){
