@@ -1,9 +1,7 @@
 const { criaAcervo } = require('../infraestrutura/tabelas')
 const User = require ('../models/user')
-const cookieParser = require('cookie-parser')
 
 module.exports = app =>{
-	app.use(cookieParser())
 
     app.post('/login', (req, res)=>{
         const user = req.body.user

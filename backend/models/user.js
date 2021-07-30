@@ -1,7 +1,6 @@
 const conexao = require('../infraestrutura/conexao')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser')
 
 class User{
 	login(user, password, res){
@@ -25,10 +24,6 @@ class User{
 							process.env.SECRET, {
 								expiresIn: 60 // expires in 5min
 						});
-						console.log(token)
-						res.cookie("id", token, {
-							httpOnly:true, 
-						});
 						res.status(200).json({success: true, token: token})
 					} 
 				});
@@ -37,7 +32,10 @@ class User{
 	}
 
 	verifyToken(token, res){
-		//console.log(token)
+		if(token == null){
+			res.json({success: false})
+			return
+		}
 		jwt.verify(token, process.env.SECRET, function(err, decoded) {
 			if (err) {
 				console.log(err)
