@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface UserStatus {
+export interface UserStatus {
 	success: boolean
 }
 
@@ -12,20 +12,18 @@ export class AuthService {
 
 	host: string = '/api';
 
-	private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
   constructor(private http: HttpClient) { }
 
-	setLoggedIn(status: boolean): void{
-			this.loggedInStatus = status;
-			localStorage.setItem('loggedIn', status.toString())
+	loggout(){
+		return this.http.get(this.host + '/loggout');
 	}
 
-	get loggedStatus(): boolean{
-			return this.loggedInStatus;
+	getLoggedStatus(){
+		return this.http.get<UserStatus>(this.host + '/login');
 	}
 
-  getUserDetails(username: string, password: string){
-	  return this.http.post<UserStatus>(this.host + '/login', {username, password});
+  getUserDetails(user: string, password: string){
+	  return this.http.post<UserStatus>(this.host + '/login', {user, password});
   }
 }

@@ -10,11 +10,10 @@ conexao.query('select 1 + 1', (err, rows) => {
     }else{
 	   console.log('conectado no banco de dados com sucesso!')
 
-	   //cria tabelas (como um migrate)
 	   Tabelas.init(conexao)
 
-	   const app = customExpress()
-	   app.listen(33001,()=>{
+		const app = customExpress()
+		app.listen(33001,()=>{
 		  console.log('servidor rodando na porta 33001!')
 	   })
     }

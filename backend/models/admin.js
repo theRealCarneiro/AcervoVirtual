@@ -2,14 +2,6 @@ const conexao = require('../infraestrutura/conexao')
 
 class Admin{
 
-	login(usr, pass, res){
-		if(usr == process.env.ADM_USR && pass == process.env.ADM_PASS){
-			res.json({success: true})
-		}else {
-			res.json({success: false})
-		}
-	}
-
     listar(res){
         const sql = 'SELECT * FROM trabalhos'
         conexao.query(sql, (erro, resultados)=>{

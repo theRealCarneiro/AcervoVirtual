@@ -25,10 +25,7 @@ export class LoginComponent implements OnInit {
 
 		this.auth.getUserDetails(username, password).subscribe(data => {
 			if(data.success){
-				this.auth.setLoggedIn(true);
 				this.route.navigate(['/admin']);
-			} else {
-				console.log("n foi");
 			}
 		});
 	}

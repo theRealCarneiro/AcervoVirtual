@@ -3,13 +3,6 @@ const Admin = require ('../models/admin')
 
 module.exports = app =>{
 
-    app.post('/login', (req, res)=>{
-        const user = req.body.username
-        const pass = req.body.password
-        
-		Admin.login(user, pass, res)      
-    })
-
     app.get('/administrador', (req,res)=>{
         Admin.listar(res)
     })
