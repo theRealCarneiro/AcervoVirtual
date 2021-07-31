@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 class AuthService {
     constructor(http) {
         this.http = http;
-        this.host = '/api';
+        this.host = 'http://alice.dcomp.ufsj.edu.br:33001';
     }
     loggout() {
         localStorage.removeItem('id');
@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 class AcervoService {
     constructor(http) {
         this.http = http;
-        this.host = '/api';
+        this.host = 'http://alice.dcomp.ufsj.edu.br:33001';
     }
     getTrabalhos() {
         return this.http.get(this.host + '/acervo');
