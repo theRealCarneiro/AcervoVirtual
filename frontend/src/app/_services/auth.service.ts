@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 export interface UserStatus {
 	success: boolean
@@ -16,11 +17,16 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 	loggout(){
-		return this.http.get(this.host + '/loggout');
+		localStorage.removeItem('id');
 	}
 
 	getLoggedStatus(){
-		const id = localStorage.getItem('id');
+		const id = localStorage.getItem('id') || undefined;
+		const helper = new JwtHelperService();
+		console.log(helper.decodeToken(id));
+		if(helper.isTokenExpired(id)){
+			console.log('fedeu');
+		} else console.log('deu');
 		return this.http.post<UserStatus>(this.host + '/auth', {id});
 	}
 

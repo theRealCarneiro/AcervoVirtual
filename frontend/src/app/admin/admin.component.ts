@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatMenu } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
-import { AcervoService } from '../acervo.service';
+import { AcervoService } from '../_services/acervo.service';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';

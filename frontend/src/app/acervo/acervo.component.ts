@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTooltip } from '@angular/material/tooltip';
-import { AcervoService } from '../acervo.service';
+import { AcervoService } from '../_services/acervo.service';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';

@@ -4,10 +4,10 @@ import { AcervoComponent } from './acervo/acervo.component';
 import { AdminComponent } from './admin/admin.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from './_helpers/auth.guard'
 
 const routes: Routes = [
-	{path: '', component: InicioComponent, pathMatch: 'full'},
+  {path: '', component: InicioComponent, pathMatch: 'full'},
   {path: 'acervo', component: AcervoComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},

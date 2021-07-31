@@ -11,3 +11,12 @@
 	display: flex;
   margin: 0 auto;
 }
+
+mat-card-title{
+	font-size: 25px;
+ text-align: center;
+}
+
+mat-card {
+	min-height: 300px;
+}

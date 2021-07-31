@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Acervo } from './acervo/acervo.component';
+import { Acervo } from '../acervo/acervo.component';
 
 @Injectable({
   providedIn: 'root'
