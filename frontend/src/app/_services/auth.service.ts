@@ -22,11 +22,11 @@ export class AuthService {
 
 	getLoggedStatus(){
 		const id = localStorage.getItem('id') || undefined;
-		const helper = new JwtHelperService();
-		console.log(helper.decodeToken(id));
-		if(helper.isTokenExpired(id)){
-			console.log('fedeu');
-		} else console.log('deu');
+		//const helper = new JwtHelperService();
+		//console.log(helper.decodeToken(id));
+		//if(helper.isTokenExpired(id)){
+			//console.log('fedeu');
+		//} else console.log('deu');
 		return this.http.post<UserStatus>(this.host + '/auth', {id});
 	}
 
