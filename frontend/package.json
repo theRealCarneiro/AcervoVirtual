@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "dist": "http-server --host 0.0.0.0 --port 33000 dist/front-observatorio",
     "e2e": "ng e2e"
   },
   "private": true,
