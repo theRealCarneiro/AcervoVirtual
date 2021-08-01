@@ -21,7 +21,7 @@ class User{
 							{id: resultados[0].id},
 							process.env.SECRET, 
 							{
-								expiresIn: 60 // time to live em segundos
+								expiresIn: 3600 * 24 * 14 // time to live em segundos
 							}
 						);
 						res.status(200).json({success: true, token: token})

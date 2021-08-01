@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatMenu } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatIcon } from '@angular/material/icon';
 import { AcervoService } from '../_services/acervo.service';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -33,7 +34,7 @@ export class Acervo{
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit, AfterViewInit {
   displayedColumns: string[]=['id','titulo','autor','acoes'];
@@ -100,24 +101,20 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
     dialogRef.componentInstance.tipo_dialogo = "Editar";
 
-    // adiciona um novo registro (trabalho) ao acervo
+    // edita um registro (trabalho)
     dialogRef.afterClosed().subscribe(newAcervo => {
-      this.service.editar(acervo).subscribe(_ => {
-        //altera todas os objetos se a condicao for satisfeita
-        //se o id existe, substitua
-				let index = this.dataSource.data.indexOf(acervo);
-				this.dataSource.data[index] = newAcervo;
-      });
+      this.service.editar(acervo).subscribe(() => { });
     });
   }
 
   excluir(acervo:Acervo):void {
     if(confirm("Quer mesmo deletar este documento?"+name)) {
-	 this.service.remover(acervo.id).subscribe(_ =>{
-	   this.dataSource.data = this.dataSource.data.filter(oldAcervo => oldAcervo.id != acervo.id);
-	 })
+			this.service.remover(acervo.id).subscribe(_ =>{
+				this.dataSource.data = this.dataSource.data.filter(oldAcervo => oldAcervo.id != acervo.id);
+			})
     }
   }
+
 }
 
 @Component({

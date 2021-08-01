@@ -33,7 +33,7 @@ export class Acervo{
 @Component({
   selector: 'app-acervo',
   templateUrl: './acervo.component.html',
-  styleUrls: ['./acervo.component.css']
+  styleUrls: ['./acervo.component.scss']
 })
 
 export class AcervoComponent implements OnInit, AfterViewInit {
@@ -86,7 +86,7 @@ openViewDialog(acervo: Acervo): void{
 @Component({
   selector: 'dialog-mng-acervo',
   templateUrl: 'dialog-mng-acervo.html',
-  styleUrls: ['./dialog-mng-acervo.css']
+  styleUrls: ['./dialog-mng-acervo.scss']
 })
 
 export class MngAcervoDialog implements OnInit {

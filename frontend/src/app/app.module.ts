@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
@@ -59,6 +60,7 @@ import { LoginComponent } from './login/login.component';
     MatMenuModule,
     MatTooltipModule,
 		MatCardModule,
+		MatIconModule,
 
     FormsModule,
     FontAwesomeModule,
