@@ -13,7 +13,8 @@ export interface UserStatus {
 })
 export class AuthService {
 
-	host: string = '/api';
+	//host: string = '/api';
+	host: string = 'http://alice.dcomp.ufsj.edu.br:33001';
 
   constructor(private http: HttpClient) { }
 
