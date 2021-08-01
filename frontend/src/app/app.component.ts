@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front-observatorio';
+	faFacebook = faFacebook;
+	faInstagram = faInstagram;
 }

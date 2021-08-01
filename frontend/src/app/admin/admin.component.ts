@@ -93,7 +93,6 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
 
   openEditDialog(acervo: Acervo): void{
-    //public tipo_dialogo = "Editar"
     const dialogRef = this.dialog.open(MngAdminDialog, {
       width: '750px',
       data: acervo
@@ -102,13 +101,12 @@ export class AdminComponent implements OnInit, AfterViewInit {
     dialogRef.componentInstance.tipo_dialogo = "Editar";
 
     // adiciona um novo registro (trabalho) ao acervo
-    dialogRef.afterClosed().subscribe(acervo => {
+    dialogRef.afterClosed().subscribe(newAcervo => {
       this.service.editar(acervo).subscribe(_ => {
         //altera todas os objetos se a condicao for satisfeita
         //se o id existe, substitua
-        this.dataSource.data = this.dataSource.data.map(oldAcervo => {
-          if(oldAcervo.id == acervo.id) return acervo;
-        });
+				let index = this.dataSource.data.indexOf(acervo);
+				this.dataSource.data[index] = newAcervo;
       });
     });
   }

@@ -1,3 +1,4 @@
+<div class=page-container>
 <div>
   <img style='margin: 0' class="rounded mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
 </div>
@@ -12,4 +13,27 @@
 </mat-toolbar>
 <div class = "container-fluid">
   <router-outlet></router-outlet>
+</div>
+</div>
+
+<div class=footer>
+<mat-toolbar style="background: #171918; color: white; font-size: 15px;" class="">
+		OBSERVATÓRIO URBANO DE SÃO JOÃO DEL-REI
+    <span style="margin: auto"></span>
+    <span style="margin: auto"></span>
+
+		<a href="https://www.facebook.com/observatoriourbanosjdr/" target="_blank" class=link-icon>
+			<fa-icon class="icon" 
+				[icon]="faFacebook" 
+				size="1x">
+			</fa-icon>
+		</a>
+
+		<a href="https://www.instagram.com/obsurbanosjdr/" target="_blank" class=link-icon>
+			<fa-icon class="icon" 
+				[icon]="faInstagram" 
+				size="1x">
+			</fa-icon>
+		</a>
+</mat-toolbar>
 </div>
