@@ -7,27 +7,27 @@ import { Acervo } from '../acervo/acervo.component';
   providedIn: 'root'
 })
 export class AcervoService {
-	host: string = 'http://alice.dcomp.ufsj.edu.br:33001';
+	host: string = '/api';
 
   constructor(private http: HttpClient) {}
 
 	getTrabalhos(): Observable<Acervo[]> {
-		return this.http.get<Acervo[]>(this.host+'/acervo');
-	}
-
-	adicionar(acervo: Acervo): Observable<any> {
-		return this.http.post(this.host+'/administrador', acervo);
+		return this.http.get<Acervo[]>(this.host + '/acervo');
 	}
 
 	getTrabalho(id: number): Observable<Acervo> {
-		return this.http.get<Acervo>(this.host+'/administrador/' + id);
+		return this.http.get<Acervo>(this.host + '/acervo/' + id);
+	}
+
+	adicionar(acervo: Acervo): Observable<any> {
+		return this.http.post(this.host + '/administrador', acervo);
 	}
 
 	editar(acervo: Acervo): Observable<any> {
-		return this.http.patch(this.host+'/administrador/' + acervo.id, acervo);
+		return this.http.patch(this.host + '/administrador/' + acervo.id, acervo);
 	}
 
 	remover(id: number): Observable<any>{
-		return this.http.delete(this.host+'/administrador/' + id);
+		return this.http.delete(this.host + '/administrador/' + id);
 	}
 }

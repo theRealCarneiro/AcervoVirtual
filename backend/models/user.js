@@ -8,13 +8,13 @@ class User{
 	 
 		conexao.query(sql, user,(erro, resultados) => { 
 			if(resultados.length == 0 || erro){ //testa se encontrou o user no bd 
-				res.status(401).json({success: false, token: null})
+				res.sendStatus(401);
 			} 
 			else {
 				//testa se a senha é válida
 				bcrypt.compare(password, resultados[0].password, function(erro, result){
 					if (erro || result == false)
-						res.status(401).json({success: false, token: null})
+						res.sendStatus(401);
 					else{
 						console.log(user, 'logado com sucesso')
 						let token = jwt.sign(
@@ -26,24 +26,8 @@ class User{
 						);
 						res.status(200).json({success: true, token: token})
 					} 
-
 				});
 			}
-		})
-	}
-
-	verifyToken(token, res){
-		if(token == null){
-			res.json({success: false})
-			return
-		}
-
-		jwt.verify(token, process.env.SECRET, function(err, decoded) {
-			if (err) {
-				res.json({success: false})
-				return
-			}
-			res.status(200).json({success: true})
 		})
 	}
 

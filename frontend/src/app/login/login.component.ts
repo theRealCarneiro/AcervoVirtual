@@ -24,11 +24,8 @@ export class LoginComponent implements OnInit {
     const username = target.querySelector('#username').value
     const password = target.querySelector('#password').value
 
-		this.auth.getUserDetails(username, password).subscribe(data => {
-			if(data.success){
-				localStorage.setItem('id', data.token);
-				this.route.navigate(['/admin']);
-			}
+		this.auth.login(username, password).subscribe(() => {
+			this.route.navigate(['/admin']);
 		});
 	}
 

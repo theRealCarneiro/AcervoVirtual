@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,6 +25,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 
 import { AuthGuard } from './_helpers/auth.guard';
+import { AuthInterceptor } from './_helpers/auth-interceptor';
 import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
 import { AdminComponent, MngAdminDialog } from './admin/admin.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -65,7 +66,13 @@ import { LoginComponent } from './login/login.component';
   entryComponents:[
     MatDialogModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+		{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

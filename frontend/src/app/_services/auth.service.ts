@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { tap, shareReplay } from 'rxjs/operators';
 
 export interface UserStatus {
 	success: boolean
@@ -12,25 +13,27 @@ export interface UserStatus {
 })
 export class AuthService {
 
-	host: string = 'http://alice.dcomp.ufsj.edu.br:33001';
+	host: string = '/api';
 
   constructor(private http: HttpClient) { }
 
-	loggout(){
-		localStorage.removeItem('id');
+	private setSession(authResult: UserStatus) {
+		localStorage.setItem('id', authResult.token);
 	}
 
 	getLoggedStatus(){
 		const id = localStorage.getItem('id') || undefined;
-		//const helper = new JwtHelperService();
-		//console.log(helper.decodeToken(id));
-		//if(helper.isTokenExpired(id)){
-			//console.log('fedeu');
-		//} else console.log('deu');
-		return this.http.post<UserStatus>(this.host + '/auth', {id});
+		const helper = new JwtHelperService();
+		return helper.isTokenExpired(id) ? false : true;
 	}
 
-  getUserDetails(user: string, password: string){
-	  return this.http.post<UserStatus>(this.host + '/login', {user, password});
+  login(user: string, password: string){
+	  return this.http.post<UserStatus>(this.host + '/login', {user, password})
+			.pipe(tap((res: UserStatus) => this.setSession(res)),
+      shareReplay());
   }
+
+	loggout(){
+		localStorage.removeItem('id');
+	}
 }
