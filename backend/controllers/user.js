@@ -1,7 +1,9 @@
 const { criaAcervo } = require('../infraestrutura/tabelas')
 const User = require ('../models/user')
+const cookieParser = require('cookie-parser')
 
 module.exports = app =>{
+	app.use(cookieParser())
 
 	app.post('/login', (req, res)=>{
 		const user = req.body.user
@@ -11,7 +13,8 @@ module.exports = app =>{
 	})
 
 	app.post('/auth', (req, res)=>{
-		const token = req.body.id
+		const token = req.cookies.id
+		console.log(token)
 
 		User.verifyToken(token, res)
 	})

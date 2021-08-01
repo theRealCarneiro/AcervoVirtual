@@ -4,6 +4,10 @@ const result = require('dotenv').config()
 const conexao = require('./infraestrutura/conexao')
 const Tabelas = require('./infraestrutura/tabelas')
 
+const options = {
+	port: 7777
+}
+
 conexao.query('select 1 + 1', (err, rows) => { 
 	if(err){
 		console.log(err)
@@ -13,8 +17,8 @@ conexao.query('select 1 + 1', (err, rows) => {
 		Tabelas.init(conexao)
 
 		const app = customExpress()
-		app.listen(33001,()=>{
-			console.log('servidor rodando na porta 33001!')
+		app.listen(options.port,()=>{
+			console.log('servidor rodando na porta ' + options.port)
 		})
 	}
 })

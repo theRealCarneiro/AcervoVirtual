@@ -1,6 +1,7 @@
 const conexao = require('../infraestrutura/conexao')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
 
 class User{
 	login(user, password, res){
@@ -8,13 +9,13 @@ class User{
 	 
 		conexao.query(sql, user,(erro, resultados) => { 
 			if(resultados.length == 0 || erro){ //testa se encontrou o user no bd 
-				res.status(401).json({success: false, token: null})
+				res.status(401).json({success: false, token: undefined})
 			} 
 			else {
 				//testa se a senha é válida
 				bcrypt.compare(password, resultados[0].password, function(erro, result){
 					if (erro || result == false)
-						res.status(401).json({success: false, token: null})
+						res.status(401).json({success: false, token: undefined})
 					else{
 						console.log(user, 'logado com sucesso')
 						let token = jwt.sign(
@@ -23,7 +24,11 @@ class User{
 							{
 								expiresIn: 60 // time to live em segundos
 							}
+
 						);
+						res.cookie("id", token, {
+							httpOnly:true, 
+						});
 						res.status(200).json({success: true, token: token})
 					} 
 
@@ -33,9 +38,8 @@ class User{
 	}
 
 	verifyToken(token, res){
-		if(token == null){
-			res.json({success: false})
-			return
+		if(token == undefined){
+			return res.json({success: false})
 		}
 
 		jwt.verify(token, process.env.SECRET, function(err, decoded) {
