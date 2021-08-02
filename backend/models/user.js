@@ -2,6 +2,9 @@ const conexao = require('../infraestrutura/conexao')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const fs = require('fs')
+const RSA_PRIVATE_KEY = fs.readFileSync('./keys/jwtRS256.key')
+
 class User{
 	login(user, password, res){
 		const sql = `SELECT * FROM usuarios WHERE user = ?`
@@ -18,10 +21,12 @@ class User{
 					else{
 						console.log(user, 'logado com sucesso')
 						let token = jwt.sign(
-							{id: resultados[0].id},
-							process.env.SECRET, 
+							{},
+							RSA_PRIVATE_KEY, 
 							{
-								expiresIn: 3600 * 24 * 14 // time to live em segundos
+								algorithm: 'RS256',
+								expiresIn: 3600 * 24 * 14, // time to live em segundos
+								subject: resultados[0].user
 							}
 						);
 						res.status(200).json({success: true, token: token})
