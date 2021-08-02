@@ -3,6 +3,13 @@
 	padding-right:20px
 }
 
+.tabela::-webkit-scrollbar {
+	width: 0 !important;
+}
+.tabela{
+	overflow-x: scroll;
+}
+
 .cell-autor {
 	cursor: pointer;
 }

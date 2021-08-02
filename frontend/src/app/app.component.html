@@ -1,26 +1,30 @@
 <div class="mat-app-background page-container">
 	<div class=app>
 		<div>
-			<img style='margin: 0, padding: 0' class="mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
+			<img class="mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
 		</div>
-		<mat-toolbar  style='margin: 0, padding: 0' color=accent>
+
+		<mat-toolbar style='margin: 0, padding: 0' color=accent>
 			<mat-toolbar-row>
 				<span style="margin: auto"></span>
+				<div>
 					<a class="toolbar" mat-button [routerLink]="'/'"> Inicio </a>
 					<a class="toolbar" mat-button [routerLink]="'/acervo'"> Acervo </a>
-					<a class="toolbar" *ngIf="getLoggedStatus()" mat-button [routerLink]="'/admin'"> Administrador </a>
+					<a class="toolbar" *ngIf="getLoggedStatus()" mat-button [routerLink]="'/admin'"> Admin </a>
+				</div>
 				<span style="margin: auto"></span>
-				<a mat-icon-button (click)="darkModeToggle()"><mat-icon>{{icon}}</mat-icon></a>
+					<a mat-icon-button (click)="darkModeToggle()"><mat-icon>{{icon}}</mat-icon></a>
 			</mat-toolbar-row>
 		</mat-toolbar>
 
-			<div class = "container-fluid">
-				<router-outlet></router-outlet>
-			</div>
+		<div class = "container-fluid">
+			<router-outlet></router-outlet>
+		</div>
+
 	</div>
 
 	<mat-toolbar color=accent style="" class="footer">
-			OBSERVATÓRIO URBANO DE SÃO JOÃO DEL-REI
+			OBSERVATÓRIO URBANO
 			<span style="margin: auto"></span>
 			<span style="margin: auto"></span>
 
@@ -39,3 +43,4 @@
 			</a>
 	</mat-toolbar>
 </div>
+

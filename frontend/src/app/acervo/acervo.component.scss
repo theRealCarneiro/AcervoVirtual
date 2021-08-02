@@ -1,9 +1,24 @@
 h1 {
   font-size: 28px;
 }
+
+.tabela::-webkit-scrollbar {
+	width: 0 !important;
+}
+.tabela{
+	overflow-x: scroll;
+}
+
+.center {
+	margin-top: 5px;
+	padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 .cell-titulo {
 	cursor: pointer;
-	padding-right:20px
+	padding-right:10px
 }
 
 .cell-autor {
@@ -11,7 +26,7 @@ h1 {
 }
 
 .cell-acoes {
-	padding-left:15px
+	//padding-left:15px
 }
 
 .download-button {

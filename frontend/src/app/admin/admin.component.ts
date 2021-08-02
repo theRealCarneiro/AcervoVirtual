@@ -103,7 +103,8 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
     // edita um registro (trabalho)
     dialogRef.afterClosed().subscribe(newAcervo => {
-      this.service.editar(acervo).subscribe(() => { });
+			if(dialogRef.componentInstance.salvar)
+				this.service.editar(acervo).subscribe(() => { });
     });
   }
 
@@ -124,10 +125,12 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
 export class MngAdminDialog{
   public tipo_dialogo: string;
+  public salvar: boolean = true;
   constructor ( public dialogRef: MatDialogRef<MngAdminDialog>, 
   @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
 
   onNoClick(): void{
+		this.salvar = false;
     this.dialogRef.close();
   }  
 

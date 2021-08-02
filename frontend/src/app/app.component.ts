@@ -18,13 +18,13 @@ export class AppComponent implements OnInit {
 	icon: string = ''
 
 	darkModeToggle(): void{
-			if (this.icon == "brightness_5"){
+			if (this.icon == "brightness_4"){
 				localStorage.setItem('darkMode', 'true');
 				this.icon = "bedtime";
 				this.className = 'darkMode';
 			}else{
 				localStorage.removeItem('darkMode');
-				this.icon = "brightness_5";
+				this.icon = "brightness_4";
 				this.className = '';
 			}
 	}
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
 		}
 		else{
 			this.className = '';
-			this.icon = 'brightness_5';
+			this.icon = 'brightness_4';
 		}
 	}
 }
