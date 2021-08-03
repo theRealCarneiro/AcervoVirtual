@@ -4,12 +4,6 @@ const result = require('dotenv').config()
 const conexao = require('./infraestrutura/conexao')
 const Tabelas = require('./infraestrutura/tabelas')
 const fs = require('fs')
-//const https = require('https')
-
-//var options = {
-    //key: fs.readFileSync(process.env.SSL_KEY),
-    //cert: fs.readFileSync(process.env.SSL_CERT),
-//};
 
 conexao.query('select 1 + 1', (err, rows) => { 
 	if(err){

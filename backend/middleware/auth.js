@@ -1,8 +1,7 @@
-const expressJwt = require('express-jwt')
 const jwt = require('jsonwebtoken')
 
 const fs = require('fs')
-const RSA_PUBLIC_KEY = fs.readFileSync('./keys/jwtRS256.key')
+const RSA_PUBLIC_KEY = fs.readFileSync(process.env.RSA_KEY_PUB)
 
 const verifyToken = (req, res, next) => {
 	const token = req.headers.id

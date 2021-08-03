@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const fs = require('fs')
-const RSA_PRIVATE_KEY = fs.readFileSync('./keys/jwtRS256.key')
+const RSA_PRIVATE_KEY = fs.readFileSync(process.env.RSA_KEY_PRIV)
 
 class User{
 	login(user, password, res){
