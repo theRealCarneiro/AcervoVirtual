@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxyconfig.json",
     "build": "ng build",
-    "build public_html": "ng build --prod --output-path $HOME/public_html/observatorio'",
+    "build public_html": "ng build --prod --output-path $HOME/public_html/observatorio",
     "build-www": "sg www-data -c 'ng build --prod --output-path /var/www/html/observatorio'",
     "test": "ng test",
     "lint": "ng lint",
