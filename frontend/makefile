@@ -3,3 +3,6 @@ all:
 
 local:
 	npm run build
+
+clean:
+	rm -r dist/observatorio
