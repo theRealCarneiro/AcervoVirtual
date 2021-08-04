@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram  } from '@fortawesome/free-brands-svg-icons';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +9,24 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'front-observatorio';
+  title = 'Observatório Urbano';
 	faFacebook = faFacebook;
 	faInstagram = faInstagram;
+	faLight = faSun;
+	faDark = faMoon;
+	faCurrent = faSun;
 
 	@HostBinding('class') className = '';
 	toggleControl = new FormControl(false);
-	icon: string = ''
 
 	darkModeToggle(): void{
-			if (this.icon == "brightness_4"){
+			if (this.className == ''){
 				localStorage.setItem('darkMode', 'true');
-				this.icon = "bedtime";
+				this.faCurrent = this.faDark;
 				this.className = 'darkMode';
 			}else{
 				localStorage.removeItem('darkMode');
-				this.icon = "brightness_4";
+				this.faCurrent = this.faLight;
 				this.className = '';
 			}
 	}
@@ -38,11 +40,11 @@ export class AppComponent implements OnInit {
 		let darkMode = localStorage.getItem('darkMode') || false;
 		if(darkMode != false){
 			this.className = 'darkMode';
-			this.icon = 'bedtime';
+			this.faCurrent = this.faDark;
 		}
 		else{
 			this.className = '';
-			this.icon = 'brightness_4';
+			this.faCurrent = this.faLight;
 		}
 	}
 }

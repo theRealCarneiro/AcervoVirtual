@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
+
+import { AppComponent } from './app.component';
+import { AuthGuard } from './_helpers/auth.guard';
+import { AuthInterceptor } from './_helpers/auth-interceptor';
+import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
+import { AdminComponent, MngAdminDialog } from './admin/admin.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { LoginComponent } from './login/login.component';
+
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,16 +30,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { fab } from '@fortawesome/free-brands-svg-icons';
-
-
-import { AuthGuard } from './_helpers/auth.guard';
-import { AuthInterceptor } from './_helpers/auth-interceptor';
-import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
-import { AdminComponent, MngAdminDialog } from './admin/admin.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { LoginComponent } from './login/login.component';
 
 
 @NgModule({

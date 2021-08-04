@@ -7,9 +7,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTooltip } from '@angular/material/tooltip';
 import { AcervoService } from '../_services/acervo.service';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+//import { faDownload, faQuestionCircle } from '@fortawesome/angular-fontawesome';
 
 export class Acervo{
   id!: number;
@@ -40,7 +39,6 @@ export class AcervoComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['titulo', 'autor', 'acoes'];
   public dataSource = new MatTableDataSource<Acervo>();
 
-  faMenu = faEllipsisV;
   faDownload = faDownload;
   faQuestionCircle = faQuestionCircle;
 

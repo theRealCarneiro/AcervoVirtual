@@ -1,7 +1,7 @@
 <div class="mat-app-background page-container">
 	<div class=app>
 		<div>
-			<img class="mx-auto d-block" src="assets/imagem/cabecalho.png" alt="cabecalho" width="100%">
+			<img class="mx-auto d-block" src="assets/imagem/cabecalho.jpg" alt="cabecalho" width="100%">
 		</div>
 
 		<mat-toolbar style='margin: 0, padding: 0' color=accent>
@@ -13,7 +13,9 @@
 					<a class="toolbar" *ngIf="getLoggedStatus()" mat-button [routerLink]="'/admin'"> Admin </a>
 				</div>
 				<span style="margin: auto"></span>
-					<a mat-icon-button (click)="darkModeToggle()"><mat-icon>{{icon}}</mat-icon></a>
+					<a (click)="darkModeToggle()"> 
+						<fa-icon class=fa-icon [icon]="faCurrent" size="1x"></fa-icon>
+					</a>
 			</mat-toolbar-row>
 		</mat-toolbar>
 

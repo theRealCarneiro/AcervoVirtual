@@ -8,7 +8,7 @@ import { Acervo } from '../acervo/acervo.component';
 })
 export class AcervoService {
 	host: string = '/api';
-	//host: string = 'http://alice.dcomp.ufsj.edu.br:33001';
+	//host: string = 'https://observatorio.ufsj.edu.br/api';
 
   constructor(private http: HttpClient) {}
 

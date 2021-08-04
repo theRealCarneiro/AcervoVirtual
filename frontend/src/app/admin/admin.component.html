@@ -47,15 +47,12 @@
 			<ng-container matColumnDef="acoes">
 			<th mat-header-cell *matHeaderCellDef>
 				<button matTooltip="Inserir" matTooltipPosition="right" mat-icon-button class="float-right" (click)="openNewDialog()">
-					<!--<fa-icon  [icon]="faAdd" size="1x"></fa-icon>-->
-					<mat-icon class=add-button >add</mat-icon>
+					<fa-icon class=add-button [icon]="faAdd" size="1x"></fa-icon>
 				</button>
 			</th>
 			<td mat-cell *matCellDef = "let acervo">
-				<!--<button mat-button [matMenuTriggerFor]="menu">-->
 				<button matTooltip="Deletar" matTooltipPosition="right" class="float-right" mat-icon-button (click)="excluir(acervo)">
-					<mat-icon color=warn>delete</mat-icon>
-					<!--<fa-icon  [icon]="faTrash"></fa-icon>-->
+					<fa-icon class=trash-button [icon]="faTrash"></fa-icon>
 				</button>
 			</td>
 			</ng-container>

@@ -7,10 +7,7 @@ import { MatMenu } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
 import { AcervoService } from '../_services/acervo.service';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrashAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export class Acervo{
   id!: number;
@@ -43,7 +40,6 @@ export class AdminComponent implements OnInit, AfterViewInit {
   public tipo: string;
 
   // Font Awesome
-  faMenu = faEllipsisV;
   faAdd = faPlus;
   faTrash = faTrashAlt;
   faQuestionCircle = faQuestionCircle;
