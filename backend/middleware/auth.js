@@ -6,11 +6,10 @@ const RSA_PUBLIC_KEY = fs.readFileSync(process.env.RSA_KEY_PUB)
 const verifyToken = (req, res, next) => {
 	const token = req.headers.id
 
-	if (!token) {
+	if (!token)
 		return res.status(403).send("A token is required for authentication");
-	}
 
-	try{
+	try {
 		jwt.verify(token, RSA_PUBLIC_KEY, { algorithms: ['RS256'] });
 	}
 	catch {

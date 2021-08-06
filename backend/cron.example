@@ -1,0 +1,1 @@
+*/1 * * * * /usr/bin/node /var/www/src/observatorio/backend/middleware/jsondb.js
