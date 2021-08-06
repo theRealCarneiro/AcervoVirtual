@@ -1,8 +1,8 @@
 #!/bin/sh
 tsv="$(curl -s -L "https://docs.google.com/spreadsheets/d/1oJWBfQyIfzXj173ok0gaGMYpIaz6HTrakepqrRuS894/export?exportFormat=tsv")"
-echo "$tsv" | tail -n +4 | sed 's/.//' | node_modules/.bin/jq -rRs 'split("\n")[1:-1] |
+echo "$tsv" | tail -n +4 | sed 's/.//' | jq -rRs 'split("\n")[1:-1] |
 	map([split("\t")[]] | {
-		"id":.[0],
+		id:.[0],
 		"titulo":.[1],
 		"autor":.[2],
 		"generoDocumental":.[3],

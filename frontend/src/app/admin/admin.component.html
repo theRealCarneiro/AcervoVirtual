@@ -14,6 +14,15 @@
 			<mat-form-field>
 				<input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
 			</mat-form-field>
+			<span style="margin: auto; float: right"></span>
+			<button mat-icon-button (click)="atualizarJson()" style="margin-right: 0px">
+				<fa-icon 
+					[icon]="faSyncAlt" 
+					size="2x"
+					matTooltip="Atualizar banco de dados dos usuários" 
+					matTooltipPosition="right">
+				</fa-icon>
+			</button>
 
 		</div>
 	</div>

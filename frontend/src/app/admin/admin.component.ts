@@ -6,27 +6,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatMenu } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
-import { AcervoService } from '../_services/acervo.service';
-import { faPlus, faTrashAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-
-export class Acervo{
-  id!: number;
-  titulo!: string;
-  autor!: string;
-  generoDocumental!: string;
-  tipoDocumental!: string;
-  apresentacaoGrafica!: string;
-  area!: string;
-  assunto!: string;
-  dataProducao!: string;
-  instituicao!: string;
-  ambito!: string;
-  orientador!: string;
-  recorteTemporal!: string;
-  recorteEspacial!: string;
-  local!: string;
-  link!: string;
-}
+import { AdminService } from '../_services/admin.service';
+import { Acervo, AcervoService } from '../_services/acervo.service';
+import { faSyncAlt, faPlus, faTrashAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin',
@@ -43,14 +25,19 @@ export class AdminComponent implements OnInit, AfterViewInit {
   faAdd = faPlus;
   faTrash = faTrashAlt;
   faQuestionCircle = faQuestionCircle;
+	faSyncAlt = faSyncAlt;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private service: AcervoService, public dialog: MatDialog) { }
+  constructor(
+		private acervoService: AcervoService,
+		private service: AdminService,
+		public dialog: MatDialog
+	) { }
 
   ngOnInit(){
-    this.service.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
+    this.acervoService.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
 
     this.paginator._intl.itemsPerPageLabel="Itens por página";
     this.paginator._intl.nextPageLabel = 'Próxima página';
@@ -58,6 +45,11 @@ export class AdminComponent implements OnInit, AfterViewInit {
     this.paginator._intl.firstPageLabel = 'Primeira página';
     this.paginator._intl.lastPageLabel = 'Última página';
   }
+
+	atualizarJson(): void {
+		this.service.atualizarJson().subscribe(() => {
+		})
+	}
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -78,12 +70,9 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
     // adiciona um novo registro (trabalho) ao acervo
     dialogRef.afterClosed().subscribe(acervo => {
-      this.service.adicionar(acervo).subscribe(id => {
-        // pega o id do novo registro
-        this.service.getTrabalho(id).subscribe(newTrabalho => {
-          // concatena ele a lista de trabalhos do front
-          this.dataSource.data = this.dataSource.data.concat(newTrabalho);
-        });
+      this.service.adicionar(acervo).subscribe(id => { // insere e recebe novo id
+				acervo.id = id;
+				this.dataSource.data = this.dataSource.data.concat(acervo); // concatena na tabela
       });
     });
   }
@@ -99,7 +88,8 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
     // edita um registro (trabalho)
     dialogRef.afterClosed().subscribe(newAcervo => {
-			if(dialogRef.componentInstance.salvar)
+			// testa se foi o botao de salvar ou cancelar
+			if(dialogRef.componentInstance.salvar) 
 				this.service.editar(acervo).subscribe(() => { });
     });
   }

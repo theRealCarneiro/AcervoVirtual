@@ -71,13 +71,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   entryComponents:[
     MatDialogModule
   ],
-  providers: [AuthGuard,
+  providers: [
+		AuthGuard,
 		{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
     }
 	],
+	//exports: bd,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

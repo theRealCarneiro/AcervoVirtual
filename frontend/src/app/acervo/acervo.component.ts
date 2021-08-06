@@ -6,28 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTooltip } from '@angular/material/tooltip';
-import { AcervoService } from '../_services/acervo.service';
+import { Acervo, AcervoService } from '../_services/acervo.service';
 import { faDownload, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-//import { faDownload, faQuestionCircle } from '@fortawesome/angular-fontawesome';
-
-export class Acervo{
-  id!: number;
-  titulo!: string;
-  autor!: string;
-  generoDocumental!: string;
-  tipoDocumental!: string;
-  apresentacaoGrafica!: string;
-  area!: string;
-  assunto!: string;
-  dataProducao!: string;
-  instituicao!: string;
-  ambito!: string;
-  orientador!: string;
-  recorteTemporal!: string;
-  recorteEspacial!: string;
-  local!: string;
-  link!: string;
-}
 
 @Component({
   selector: 'app-acervo',
@@ -48,7 +28,10 @@ export class AcervoComponent implements OnInit, AfterViewInit {
   constructor(private service: AcervoService, public dialog: MatDialog) { }
 
   ngOnInit(){
-    this.service.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
+		//this.service.getJsonBD().then(
+			//(acervo: Acervo[]) => this.dataSource.data = acervo
+		//);
+		this.service.getJsonBD().subscribe(acervo => this.dataSource.data = acervo);
 
     this.paginator._intl.itemsPerPageLabel="Itens por página";
     this.paginator._intl.nextPageLabel = 'Próxima página';
@@ -96,19 +79,19 @@ export class MngAcervoDialog implements OnInit {
   public local = true;
 
   ngOnInit(){
-	  if(this.data.orientador == "-"){
+	  if(this.data.orientador == "-" || this.data.orientador == ""){
 	    this.orientador = false;
     }
 
-	  if(this.data.recorteTemporal == "-"){
+	  if(this.data.recorteTemporal == "-" || this.data.recorteTemporal == ""){
 	    this.recorteTemporal = false;
     }
 
-	  if(this.data.recorteEspacial == "-"){
+	  if(this.data.recorteEspacial == "-" || this.data.recorteEspacial == ""){
 	    this.recorteEspacial = false;
     }
 
-	  if(this.data.local == "-"){
+	  if(this.data.local == "-" || this.data.local == ""){
 	    this.local = false;
     }
   }

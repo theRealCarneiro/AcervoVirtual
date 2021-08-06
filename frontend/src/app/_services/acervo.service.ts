@@ -1,7 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Acervo } from '../acervo/acervo.component';
+
+export class Acervo{
+  id!: number;
+  titulo!: string;
+  autor!: string;
+  generoDocumental!: string;
+  tipoDocumental!: string;
+  apresentacaoGrafica!: string;
+  area!: string;
+  assunto!: string;
+  dataProducao!: string;
+  instituicao!: string;
+  ambito!: string;
+  orientador!: string;
+  recorteTemporal!: string;
+  recorteEspacial!: string;
+  local!: string;
+  link!: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +31,15 @@ export class AcervoService {
 
   constructor(private http: HttpClient) {}
 
+	getJsonBD(): Observable<Acervo[]> {
+		return this.http.get<Acervo[]>('/assets/bd/bd.json');
+	}
+	
 	getTrabalhos(): Observable<Acervo[]> {
 		return this.http.get<Acervo[]>(this.host + '/acervo');
 	}
 
 	getTrabalho(id: number): Observable<Acervo> {
 		return this.http.get<Acervo>(this.host + '/acervo/' + id);
-	}
-
-	adicionar(acervo: Acervo): Observable<any> {
-		return this.http.post(this.host + '/administrador', acervo);
-	}
-
-	editar(acervo: Acervo): Observable<any> {
-		return this.http.patch(this.host + '/administrador/' + acervo.id, acervo);
-	}
-
-	remover(id: number): Observable<any>{
-		return this.http.delete(this.host + '/administrador/' + id);
 	}
 }
