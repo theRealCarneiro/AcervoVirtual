@@ -1,38 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/theming.scss";
-@include mat-core();
-$angular-primary: mat-palette($mat-blue, A200, A100, A400);
-$angular-accent: mat-palette($mat-grey, 100, 500, 900);
-$angular-warn: mat-palette($mat-red);
-$angular-default-theme: mat-light-theme(
-  (
-    color: (
-      primary: $angular-primary,
-      accent: $angular-accent,
-      warn: $angular-warn,
-    ),
-  )
-);
-@include angular-material-theme($angular-default-theme);
-
-.darkMode {
-
-	$angular-primary: mat-palette($mat-blue, 500, A100, A400);
-	$angular-accent: mat-palette($mat-grey, 900, 500, 900);
-	$angular-warn: mat-palette($mat-red, 600);
-
-	$angular-dark-theme: mat-dark-theme(
-		(
-			color: (
-				primary: $angular-primary,
-				accent: $angular-accent,
-				warn: $angular-warn,
-			),
-		)
-	);
-  @include angular-material-color($angular-dark-theme);
-}
+@import './theme.scss';
 
 h1 {
 	font-size: 28px;
