@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const dotenvDir = '/var/www/src/observatorio/backend/.env';
+const dotenvDir = '/var/www/src/acervo/backend/.env';
 const result = require('dotenv').config({path: dotenvDir});
 const acervo = require('../models/acervo');
 const fs = require('fs');
