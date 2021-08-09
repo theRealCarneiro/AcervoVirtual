@@ -1,8 +1,11 @@
 {
-	"/api": {
+	"/acervo/api": {
 		"target": "http://localhost:43001",
 		"secure": false,
 		"changeOrigin": true,
-		"pathRewrite": {"^/api" : ""}
+		"pathRewrite": {"^/acervo/api" : ""}
+	},
+	"/acervo/assets": {
+		"pathRewrite": {"^/acervo/assets" : "/assets"}
 	}
 }

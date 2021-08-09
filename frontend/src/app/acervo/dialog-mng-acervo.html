@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Detalhes do trabalho</h1>
-<div class="mat-app-background" mat-dialog-content>
+<h1 style='text-align: left'>Detalhes do trabalho</h1>
+<div mat-dialog-content>
   <div class="row">
 	<h3><b>Titulo: </b> {{data.titulo}}</h3>
   </div>
@@ -56,6 +56,6 @@
 
 
 <div mat-dialog-actions align="end">
-  <button mat-button (click)="onNoClick()">Fechar</button>
-  <button mat-button (click)="download()">Download</button>
+  <button mat-raised-button color=warn (click)="onNoClick()">Fechar</button>
+  <button mat-raised-button color=primary (click)="download()">Download</button>
 </div> 

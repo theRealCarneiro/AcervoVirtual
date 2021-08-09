@@ -18,13 +18,14 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+	"strictPropertyInitialization": false,
     "lib": [
       "es2018",
       "dom"
     ]
   },
   "angularCompilerOptions": {
-		"strictPropertyInitialization": false,
+	"strictPropertyInitialization": false,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

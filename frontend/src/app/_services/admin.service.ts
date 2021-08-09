@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 import { Acervo } from './acervo.service';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AdminService {
-	host: string = '/api';
-	//host: string = 'https://observatorio.ufsj.edu.br/api';
+	host = '/acervo/api';
+	// host = 'https://observatorio.ufsj.edu.br/api';
 
-  constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {}
 
 	adicionar(acervo: Acervo): Observable<any> {
 		return this.http.post(this.host + '/admin', acervo);
@@ -24,7 +24,7 @@ export class AdminService {
 		return this.http.delete(this.host + '/admin/' + id);
 	}
 
-	atualizarJson() {
+	atualizarJson(): Observable<any> {
 		return this.http.get(this.host + '/admin/update_json');
 	}
 }

@@ -1,4 +1,3 @@
-@import "~@angular/material/theming.scss";
 @include mat-core();
 $angular-primary: mat-palette($mat-blue, A200, A100, A400);
 $angular-accent: mat-palette($mat-grey, 100, 500, 900);

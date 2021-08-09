@@ -1,12 +1,12 @@
 {
-  "name": "front-observatorio",
+  "name": "front-acervo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxyconfig.json",
     "build": "ng build",
-    "build public_html": "ng build --prod --output-path $HOME/public_html/observatorio",
-    "build-www": "sg www-data -c 'ng build --prod --output-path /var/www/html/observatorio'",
+    "build public_html": "ng build --prod --output-path $HOME/public_html/acervo",
+    "build-www": "sg www-data -c 'ng build --prod --output-path /var/www/html/acervo --base-href=/acervo/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

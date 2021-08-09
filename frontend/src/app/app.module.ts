@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,8 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AuthInterceptor } from './_helpers/auth-interceptor';
-import { AcervoComponent, MngAcervoDialog } from './acervo/acervo.component';
-import { AdminComponent, MngAdminDialog } from './admin/admin.component';
+import { AcervoComponent, MngAcervoDialogComponent } from './acervo/acervo.component';
+import { AdminComponent, MngAdminDialogComponent } from './admin/admin.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 
@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -35,51 +35,50 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AcervoComponent,
-    AdminComponent,
-    MngAcervoDialog,
-    MngAdminDialog,
-    InicioComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
+	declarations: [
+		AppComponent,
+		AcervoComponent,
+		AdminComponent,
+		MngAcervoDialogComponent,
+		MngAdminDialogComponent,
+		InicioComponent,
+		LoginComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
 		FlexLayoutModule,
 
-    MatTableModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule, 
-    MatSortModule,
-    MatPaginatorModule,
-    MatMenuModule,
-    MatTooltipModule,
+		MatTableModule,
+		MatToolbarModule,
+		MatButtonModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatSortModule,
+		MatPaginatorModule,
+		MatMenuModule,
+		MatTooltipModule,
 		MatCardModule,
 		MatIconModule,
 		MatSidenavModule,
 
-    FormsModule,
-    FontAwesomeModule,
-  ],
-  entryComponents:[
-    MatDialogModule
-  ],
-  providers: [
+		FormsModule,
+		FontAwesomeModule,
+	],
+	entryComponents: [
+		MatDialogModule
+	],
+	providers: [
 		AuthGuard,
 		{
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptor,
+			multi: true
+		}
 	],
-	//exports: bd,
-  bootstrap: [AppComponent]
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

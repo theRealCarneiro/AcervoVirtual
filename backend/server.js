@@ -20,7 +20,7 @@ conexao.query('select 1 + 1', (err, rows) => {
 	app.use(bodyParser.json());
 
 	app.get('/', (req, res) =>{
-		res.status(200).send('API acervo');
+		res.send('API acervo');
 	})
     
 	consign()
