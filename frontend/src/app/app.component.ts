@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
 	title = 'Observatório Urbano';
 	faFacebook = faFacebook;
 	faInstagram = faInstagram;
-	faLight = faSun;
-	faDark = faMoon;
+	faLight = faMoon;
+	faDark = faSun;
 	faCurrent = this.faLight;
 
 	@HostBinding('class') className = '';
