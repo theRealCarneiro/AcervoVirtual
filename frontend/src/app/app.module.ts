@@ -13,6 +13,7 @@ import { AuthInterceptor } from './_helpers/auth-interceptor';
 import { AcervoComponent, MngAcervoDialogComponent } from './acervo/acervo.component';
 import { AdminComponent, MngAdminDialogComponent } from './admin/admin.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { ContatoComponent } from './contato/contato.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -42,6 +43,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		MngAcervoDialogComponent,
 		MngAdminDialogComponent,
 		InicioComponent,
+		ContatoComponent,
 		LoginComponent
 	],
 	imports: [
