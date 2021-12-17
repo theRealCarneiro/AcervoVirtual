@@ -5,7 +5,7 @@ const RSA_PUBLIC_KEY = fs.readFileSync(process.env.RSA_KEY_PUB);
 
 class Auth {
 	static verifyToken(req, res, next) {
-		const token = req.headers.id;
+		const token = req.headers.token;
 
 		if (!token) return res.status(403).send({ status: 1, message: "Nenhum token encontrado" });
 

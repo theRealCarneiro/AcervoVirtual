@@ -9,9 +9,15 @@ class Trabalho {
         return connection(Trabalho.table()).where({ id: id });
     }
 
+    static search (connection, trabalho) {
+		return connection(Trabalho.table()).where((qb) => { 
+			for (let i in trabalho) qb.where(i, 'like', `%${trabalho[i]}%`) 
+		});
+    }
+
     static insert(connection, trabalho) {
-        return connection(Trabalho.table()).insert(trabalho)
-            .then(rows => { return { sucess: true } })
+        return connection(Trabalho.table()).insert(trabalho).returning('id')
+			.then(id => { return { sucess: true, id: id[0] } })
             .catch(error => {
                 console.log(error);
                 if (error.code === 'ER_DUP_ENTRY') return {sucess: false, code: 422, message: 'Trabalho já cadastrado'};

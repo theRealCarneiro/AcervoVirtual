@@ -41,7 +41,7 @@ module.exports = {
 
 		usuario.senha = bcrypt.hashSync(usuario.senha, 10);
 
-        const { sucess, code, message } = await Usuario.insert(
+        const { id, sucess, code, message } = await Usuario.insert(
 			res.locals.connection, usuario
 		);
 

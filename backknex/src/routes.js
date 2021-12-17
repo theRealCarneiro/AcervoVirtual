@@ -33,18 +33,23 @@ routes.put('/login', UsuarioController.login);
 // Trabalhos routes
 // Inserir um trabalho
 // Parâmetros: user=object (body)
-routes.post('/trabalho', auth.verifyToken, TrabalhoController.create);
+routes.post('/trabalhos', auth.verifyToken, TrabalhoController.create);
 
 // Deleta um trabalho
 // Parâmetros: id params
-routes.delete('/trabalho/:id', auth.verifyToken, TrabalhoController.delete);
+routes.delete('/trabalhos/:id', auth.verifyToken, TrabalhoController.delete);
 
 // Atualiza um trabalho
 // Parâmetros: id params
-routes.patch('/trabalho/:id', auth.verifyToken, TrabalhoController.update);
+routes.patch('/trabalhos/:id', auth.verifyToken, TrabalhoController.update);
 
 // Lista trabalhos
-routes.get('/trabalho', TrabalhoController.list);
-routes.get('/trabalho/:id', TrabalhoController.getById);
+routes.get('/trabalhos', TrabalhoController.list);
+routes.get('/trabalhos/:id', TrabalhoController.getById);
+
+// Pesquisa
+// Parâmentros { trabalho } (body)
+// Não precisa colocar todos os parametros
+routes.put('/trabalhos', TrabalhoController.search);
 
 module.exports = routes;

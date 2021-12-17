@@ -19,15 +19,26 @@ module.exports = {
 		return res.send({ status: 0, trabalho: trabalho });
 	},
 
+	search: async (req, res) => {
+		const { trabalho } = req.body;
+		console.log(trabalho);
+
+		const trabalhos = await Trabalho.search(res.locals.connection, trabalho);
+		if (!trabalhos) return res.status(404).send({
+			status: 1, message: 'Nenhum trabalho cadastrado'
+		});
+		return res.send({ status: 0, trabalhos: trabalhos });
+	},
+
 	create: async (req, res) => {
 		const { trabalho } = req.body;
 
 		if (!trabalho) return res.status(400).send({status: 1, message: 'Objeto \'trabalho\' ausente no corpo da requisição'});
 
-        const { sucess, code, message } = await Trabalho.insert(res.locals.connection, trabalho);
+        const { id, sucess, code, message } = await Trabalho.insert(res.locals.connection, trabalho);
 
         if (!sucess) return res.status(code).send({ status: 1, message: message || 'Não foi possível cadastrar o trabalho devido a um erro interno' });
-        return res.status(201).send({ status: 0 });
+		return res.status(201).send({ status: 0, id: id });
 	},
 
 	delete: async (req, res) => {
