@@ -1,32 +1,20 @@
 {
-  "name": "back-observatorio",
-  "version": "1.0.0",
-  "description": "backend sistema web observatorio urbano de sao joao del rei",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon app",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "gabriel carneiro, lucas estevao",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.0",
-    "consign": "^0.1.6",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "fs": "^0.0.1-security",
-    "jq": "^1.7.2",
-    "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
-    "save-dev": "*"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
-	"nodemonConfig": {
-    "ignore": ["*.json"]
-  }
+	"name": "back-observatorio",
+	"version": "2.0.0",
+	"description": "Backend do acervo virtual",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js",
+		"test": "jest"
+	},
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"knex": "^0.95.14",
+		"mysql2": "^2.3.3",
+		"nodemon": "^2.0.15"
+	}
 }

@@ -1,2 +1,0 @@
-# Run every minute
-*/1 * * * * /var/www/src/observatorio/backend/middleware/jsondb.js
