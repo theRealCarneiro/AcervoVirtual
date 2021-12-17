@@ -1,0 +1,72 @@
+<h1 style='text-align: left'>Detalhes do trabalho</h1>
+<div mat-dialog-content>
+  <div class="row">
+	<h3><b>Titulo: </b> {{data.titulo}}</h3>
+  </div>
+
+  <div *ngIf='data.autor'class="row">
+	<h3><b>Autor: </b> {{data.autor}}</h3>
+  </div>
+
+  <div *ngIf='data.generoDocumental' class="row">
+	<h3><b>Gênero Documental: </b> {{data.generoDocumental}}</h3>
+  </div>
+
+  <div *ngIf='data.tipoDocumental' class="row">
+	<h3><b>Tipo de documento: </b> {{data.tipoDocumental}}</h3>
+  </div>
+
+  <div *ngIf='data.apresentacaoGrafica' class="row">
+	<h3><b>Apresentação gráfica: </b> {{data.apresentacaoGrafica}}</h3>
+  </div>
+
+  <div *ngIf='data.area' class="row">
+	<h3><b>Área de conhecimento: </b> {{data.area}}</h3>
+  </div>
+
+  <div *ngIf='data.assunto' class="row">
+	<h3><b>Assunto: </b>{{data.assunto}}</h3>
+  </div>
+
+  <div *ngIf='data.dataProducao' class="row">
+	<h3><b>Data de produção: </b> {{data.dataProducao}}</h3>
+  </div>
+
+  <div *ngIf='data.instituicao'class="row">
+	<h3><b>Local de produção: </b> {{data.instituicao}}</h3>
+  </div>
+
+  <div *ngIf='data.ambito' class="row">
+	  <h3><b>Ambito e Conteúdo: </b> {{data.ambito}}</h3>
+  </div>
+
+  <div class="row">
+    <h3>
+	 <p>
+	   <b *ngIf="data.orientador && data.recorteTemporal && data.recorteEspacial && data.local">Nota Gerais: </b> 
+	   <strong class="notas-gerais" *ngIf="data.orientador">Orientador: {{data.orientador}} &nbsp;&nbsp;</strong>
+	   <strong class="notas-gerais" *ngIf="data.recorteTemporal">Recorte Temporal: {{data.recorteTemporal}} &nbsp;&nbsp;</strong>
+	   <strong class="notas-gerais" *ngIf="data.recorteEspacial">Recorte Espacial: {{data.recorteEspacial}} &nbsp;&nbsp;</strong>
+	   <strong class="notas-gerais" *ngIf="data.local">Local/Bairro: {{data.local}}</strong>
+	 </p>
+    </h3>
+  </div>
+	<div *ngIf="video">
+		<youtube-player 
+			[videoId]="link" 
+			suggestedQuality="highres" 
+			[width]="640" 
+			[height]="360" 
+			host='https://www.youtube.com'
+			[startSeconds]="0"
+			[endSeconds]="0">
+		</youtube-player>
+	</div>
+
+</div>
+
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button color=warn (click)="onNoClick()">Fechar</button>
+  <button mat-raised-button color=primary (click)="download()">Acessar</button>
+</div> 

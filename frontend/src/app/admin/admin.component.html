@@ -14,17 +14,18 @@
 			<mat-form-field>
 				<input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
 			</mat-form-field>
+			<button mat-button style="margin-left:20px" color=primary (click)="openFiltroDialog()">Filtro avançado</button>
 			<span style="margin: auto; float: right"></span>
-			<button mat-icon-button (click)="atualizarJson()" style="margin-right: 0px">
-				<fa-icon 
-					[icon]="faSyncAlt" 
-					size="2x"
-					matTooltip="Atualizar banco de dados dos usuários" 
-					matTooltipPosition="right">
-				</fa-icon>
-			</button>
-
+			<!--<button mat-icon-button (click)="atualizarJson()" style="margin-right: 0px">-->
+				<!--<fa-icon -->
+					<!--[icon]="faSyncAlt" -->
+					<!--size="2x"-->
+					<!--matTooltip="Atualizar banco de dados dos usuários" -->
+					<!--matTooltipPosition="right">-->
+				<!--</fa-icon>-->
+			<!--</button>-->
 		</div>
+		<!--<button mat-raised-button style="margin-bottom:20px" color=accent (click)="openFiltroDialog()">Filtro avançado</button>-->
 	</div>
 </div>
 

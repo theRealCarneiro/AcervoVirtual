@@ -4,17 +4,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
+
 import { AppRoutingModule } from './app-routing.module';
-
-
 import { AppComponent } from './app.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AuthInterceptor } from './_helpers/auth-interceptor';
-import { AcervoComponent, MngAcervoDialogComponent } from './acervo/acervo.component';
-import { AdminComponent, MngAdminDialogComponent } from './admin/admin.component';
+import { AcervoComponent } from './acervo/acervo.component';
+import { AdminComponent } from './admin/admin.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ContatoComponent } from './contato/contato.component';
 import { LoginComponent } from './login/login.component';
+import { MngAdminDialogComponent, MngAcervoDialogComponent, FiltroDialogComponent } from './dialogs/dialogs.component';
 
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -40,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		AppComponent,
 		AcervoComponent,
 		AdminComponent,
+		FiltroDialogComponent,
 		MngAcervoDialogComponent,
 		MngAdminDialogComponent,
 		InicioComponent,
@@ -52,6 +55,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		BrowserAnimationsModule,
 		HttpClientModule,
 		FlexLayoutModule,
+		YouTubePlayerModule,
 
 		MatTableModule,
 		MatToolbarModule,

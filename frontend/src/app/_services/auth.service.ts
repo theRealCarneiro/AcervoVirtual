@@ -20,17 +20,17 @@ export class AuthService {
 	constructor(private http: HttpClient) { }
 
 	private setSession(authResult: UserStatus): void{
-		localStorage.setItem('id', authResult.token);
+		localStorage.setItem('token', authResult.token);
 	}
 
-	getLoggedStatus(): boolean{
-		const id = localStorage.getItem('id') || undefined;
+	getLoggedStatus(): boolean {
+		const token = localStorage.getItem('token') || undefined;
 		const helper = new JwtHelperService();
-		return helper.isTokenExpired(id) ? false : true;
+		return helper.isTokenExpired(token) ? false : true;
 	}
 
-	login(user: string, password: string): Observable<UserStatus>{
-		return this.http.post<UserStatus>(this.host + '/login', {user, password})
+	login(usuario: string, senha: string): Observable<UserStatus> {
+		return this.http.put<UserStatus>(this.host + '/login', { usuario, senha })
 			.pipe(tap((res: UserStatus) => this.setSession(res)),
 			shareReplay());
 	}

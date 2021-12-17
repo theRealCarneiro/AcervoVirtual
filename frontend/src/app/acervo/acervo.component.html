@@ -1,7 +1,7 @@
 <div class="row justify-content-md-center mt-5">
 	<div class="col-10 align-self-center">
 
-		<h1>Trabalhos
+		<h1>{{title}}
 			<fa-icon class="help" 
 				#tooltip="matTooltip"
 				matTooltip="Para usar o filtro basta apenas que pesquise pelo termo desejado" 
@@ -16,6 +16,7 @@
 			<mat-form-field>
 				 <input #busca matInput type="text" (keyup)="doFilter(busca.value)" placeholder="Filtro">
 			</mat-form-field>
+			<button mat-button style="margin-left:20px" color=primary (click)="openFiltroDialog()">Filtro avançado</button>
 		</div>
 
 	</div>
@@ -43,10 +44,12 @@
 			</ng-container>
             
 			<ng-container matColumnDef="acoes">
-				<th class="cell-acoes" mat-header-cell *matHeaderCellDef>Baixar</th>
+				<th mat-header-cell *matHeaderCellDef>
+					<p class="float-right">Acessar</p>
+				</th>
 				<td mat-cell *matCellDef = "let acervo">
-					<button matTooltip="Baixar" matTooltipPosition="right" mat-icon-button (click)="download(acervo)">
-						<fa-icon class="download-button" [icon]="faDownload" ></fa-icon>
+					<button class="float-right" matTooltip="Acessar documento" matTooltipPosition="right" mat-icon-button (click)="download(acervo)">
+						<fa-icon class="download-button" [icon]="faExternalLinkAlt" ></fa-icon>
 					</button>
 				</td>
 			</ng-container>

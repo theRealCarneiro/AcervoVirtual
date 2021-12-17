@@ -32,8 +32,8 @@ export class AppComponent implements OnInit {
 	}
 
 	getLoggedStatus(): boolean {
-		const id = localStorage.getItem('id') || null;
-		return id ? true : false;
+		const token = localStorage.getItem('token') || null;
+		return token ? true : false;
 	}
 
 	ngOnInit(): void {

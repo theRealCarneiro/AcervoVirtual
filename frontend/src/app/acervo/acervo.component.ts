@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit, ViewChild, AfterViewInit,  } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, AfterViewInit,   } from '@angular/core';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,8 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTooltip } from '@angular/material/tooltip';
-import { Acervo, AcervoService } from '../_services/acervo.service';
-import { faDownload, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { Acervo, TrabalhosStatus, AcervoService } from '../_services/acervo.service';
+import { FiltroDialogComponent, MngAcervoDialogComponent } from '../dialogs/dialogs.component';
+import { faDownload, faQuestionCircle, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-acervo',
@@ -18,20 +21,39 @@ import { faDownload, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 export class AcervoComponent implements OnInit, AfterViewInit {
 	displayedColumns: string[] = ['titulo', 'autor', 'acoes'];
 	public dataSource = new MatTableDataSource<Acervo>();
+	title = 'Trabalhos';
+	downloadButton = true;
 
 	faDownload = faDownload;
 	faQuestionCircle = faQuestionCircle;
+	faExternalLinkAlt = faExternalLinkAlt;
 
 	@ViewChild(MatSort) sort: MatSort;
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-	constructor(private service: AcervoService, public dialog: MatDialog) { }
+	constructor(private service: AcervoService, public dialog: MatDialog, private router: Router) { }
 
 	ngOnInit(): void{
-		// this.service.getJsonBD().then(
-			// (acervo: Acervo[]) => this.dataSource.data = acervo
-		// );
-		this.service.getJsonBD().subscribe(acervo => this.dataSource.data = acervo);
+		// this.service.getJsonBD().subscribe(acervo => this.dataSource.data = acervo);
+		let trabalho = null;
+		const route = this.router.url.substring(1);
+		switch (route){
+			case 'videos':
+				this.title = 'Vídeos';
+				this.downloadButton = false;
+				trabalho = new Acervo();
+				trabalho.tipoDocumental = 'Vídeo';
+				break;
+		}
+
+		this.service.getTrabalhos(trabalho).subscribe(res => {
+			if (res.status) {
+				console.log(res.message);
+			}
+			else {
+				this.dataSource.data = res.trabalhos;
+			}
+		});
 
 		this.paginator._intl.itemsPerPageLabel = 'Itens por página';
 		this.paginator._intl.nextPageLabel = 'Próxima página';
@@ -54,54 +76,32 @@ export class AcervoComponent implements OnInit, AfterViewInit {
 	}
 
 
-openViewDialog(acervo: Acervo): void{
-	const darkMode = localStorage.getItem('darkMode') || false;
-	const className = darkMode ? 'darkMode' : '';
-	const dialogRef = this.dialog.open(MngAcervoDialogComponent, {
-			width: '750px',
-			panelClass: className,
-			data: acervo
+	openViewDialog(acervo: Acervo): void{
+		const darkMode = localStorage.getItem('darkMode') || false;
+		const className = darkMode ? 'darkMode' : '';
+		const dialogRef = this.dialog.open(MngAcervoDialogComponent, {
+				width: '750px',
+				panelClass: className,
+				data: acervo
 		});
 	}
-}
 
-@Component({
-	selector: 'app-dialog-mng-acervo',
-	templateUrl: 'dialog-mng-acervo.html',
-	styleUrls: ['./dialog-mng-acervo.scss'],
-})
+	openFiltroDialog(): void{
+		const darkMode = localStorage.getItem('darkMode') || false;
+		const className = darkMode ? 'darkMode' : '';
+		const dialogRef = this.dialog.open(FiltroDialogComponent, {
+				width: '750px',
+				panelClass: className,
+				data: new Acervo()
+		});
 
-export class MngAcervoDialogComponent implements OnInit {
-	constructor(public dialogRef: MatDialogRef<MngAcervoDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
-	public orientador = true;
-	public recorteTemporal = true;
-	public recorteEspacial = true;
-	public local = true;
-
-	ngOnInit(): void{
-		if (this.data.orientador === '-' || this.data.orientador === ''){
-			this.orientador = false;
-		}
-
-		if (this.data.recorteTemporal === '-' || this.data.recorteTemporal === ''){
-			this.recorteTemporal = false;
-		}
-
-		if (this.data.recorteEspacial === '-' || this.data.recorteEspacial === ''){
-			this.recorteEspacial = false;
-		}
-
-		if (this.data.local === '-' || this.data.local === '') {
-			this.local = false;
-		}
+		dialogRef.afterClosed().subscribe(filtro => {
+			if (dialogRef.componentInstance.filtrar) {
+				this.service.getTrabalhos(filtro).subscribe(res => {
+					res.status ? console.log(res.message) : this.dataSource.data = res.trabalhos;
+				});
+			}
+		});
 	}
-
-	download(): void{
-	window.open(this.data.link);
-	}
-	onNoClick(): void{
-		this.dialogRef.close();
-	}
-
 }
 

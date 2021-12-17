@@ -21,6 +21,11 @@ export class Acervo{
 	link!: string;
 }
 
+export class TrabalhosStatus {
+	status!: number;
+	trabalhos!: Acervo[];
+}
+
 
 @Injectable({
 	providedIn: 'root'
@@ -35,11 +40,15 @@ export class AcervoService {
 		return this.http.get<Acervo[]>('/acervo/assets/bd/bd.json');
 	}
 
-	getTrabalhos(): Observable<Acervo[]> {
-		return this.http.get<Acervo[]>(this.host + '/acervo');
+	// getTrabalhos(): Observable<Acervo[]> {
+	getTrabalhos(trabalho: any): Observable<any> {
+		if (trabalho) {
+			return this.http.put(this.host + '/trabalhos', { trabalho });
+		}
+		return this.http.get(this.host + '/trabalhos');
 	}
 
-	getTrabalho(id: number): Observable<Acervo> {
-		return this.http.get<Acervo>(this.host + '/acervo/' + id);
+	getTrabalho(id: number): Observable<any> {
+		return this.http.get(this.host + '/trabalhos' + id);
 	}
 }

@@ -7,7 +7,8 @@ import { MatMenu } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
 import { AdminService } from '../_services/admin.service';
-import { Acervo, AcervoService } from '../_services/acervo.service';
+import { Acervo, TrabalhosStatus, AcervoService } from '../_services/acervo.service';
+import { FiltroDialogComponent, MngAdminDialogComponent } from '../dialogs/dialogs.component';
 import { faSyncAlt, faPlus, faTrashAlt, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -35,7 +36,14 @@ export class AdminComponent implements OnInit, AfterViewInit {
 	) { }
 
 	ngOnInit(): void{
-		this.acervoService.getTrabalhos().subscribe(acervo => this.dataSource.data = acervo);
+		this.acervoService.getTrabalhos(null).subscribe(res => {
+			if (res.status) {
+				console.log(res.message);
+			}
+			else {
+				this.dataSource.data = res.trabalhos;
+			}
+		});
 
 		this.paginator._intl.itemsPerPageLabel = 'Itens por página';
 		this.paginator._intl.nextPageLabel = 'Próxima página';
@@ -72,8 +80,9 @@ export class AdminComponent implements OnInit, AfterViewInit {
 		dialogRef.afterClosed().subscribe(acervo => {
 
 			if (dialogRef.componentInstance.salvar) {
-				this.service.adicionar(acervo).subscribe(id => { // insere e recebe novo id
-					acervo.id = id;
+				this.service.adicionar(acervo).subscribe(res => { // insere e recebe novo id
+					acervo.id = res.id;
+					console.log(res);
 					this.dataSource.data = this.dataSource.data.concat(acervo); // concatena na tabela
 				});
 			}
@@ -109,20 +118,22 @@ export class AdminComponent implements OnInit, AfterViewInit {
 		}
 	}
 
-}
+	openFiltroDialog(): void{
+		const darkMode = localStorage.getItem('darkMode') || false;
+		const className = darkMode ? 'darkMode' : '';
+		const dialogRef = this.dialog.open(FiltroDialogComponent, {
+				width: '750px',
+				panelClass: className,
+				data: new Acervo()
+		});
 
-@Component({
-	selector: 'app-dialog-mng-admin',
-	templateUrl: 'dialog-mng-admin.html'
-})
-
-export class MngAdminDialogComponent {
-	public tipoDialogo = '';
-	public salvar = true;
-	constructor(public dialogRef: MatDialogRef<MngAdminDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
-
-	onNoClick(): void{
-		this.salvar = false;
-		this.dialogRef.close();
+		dialogRef.afterClosed().subscribe(filtro => {
+			if (dialogRef.componentInstance.filtrar) {
+				this.acervoService.getTrabalhos(filtro).subscribe(res => {
+					res.status ? console.log(res.message) : this.dataSource.data = res.trabalhos;
+				});
+			}
+		});
 	}
+
 }

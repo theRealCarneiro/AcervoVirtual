@@ -8,11 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
-	{path: '', component: InicioComponent, pathMatch: 'full'},
-	{path: 'contato', component: ContatoComponent},
-	{path: 'trabalhos', component: AcervoComponent},
-	{path: 'login', component: LoginComponent},
-	{path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+	{ path: '', component: InicioComponent, pathMatch: 'full' },
+	{ path: 'contato', component: ContatoComponent },
+	{ path: 'trabalhos', component: AcervoComponent },
+	{ path: 'videos', component: AcervoComponent },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
