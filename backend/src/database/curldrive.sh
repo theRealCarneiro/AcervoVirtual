@@ -27,7 +27,7 @@ echo "$tsv" | jq -rRs 'split("\n")[1:-1] |
 		"recorteEspacial":.[13],
 		"local":.[14],
 		"link":.[15],
-	})' > ./seeds/trabalhos.json
+	})' > /var/www/src/acervo/backend/src/database/seeds/trabalhos.json
 
 echo "$videos_tsv" | jq -rRs 'split("\n")[1:-1] |
 	map([split("\t")[]] | {
@@ -42,4 +42,4 @@ echo "$videos_tsv" | jq -rRs 'split("\n")[1:-1] |
 		"instituicao":.[8],
 		"ambito":.[9],
 		"link":.[10],
-	})' > ./seeds/videos.json
+	})' > /var/www/src/acervo/backend/src/database/seeds/videos.json
