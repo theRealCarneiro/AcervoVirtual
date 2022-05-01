@@ -1,12 +1,35 @@
 const Trabalho = require('../models/Trabalho');
+const fs = require('fs')
 
 module.exports = {
+	//list: async (req, res) => {
+		//const trabalhos = await Trabalho.list(res.locals.connection);
+		//const videos = await Trabalho.listVideos(res.locals.connection)
+		//if (!trabalhos) return res.status(404).send({
+			//status: 1, message: 'Nenhum trabalho cadastrado'
+		//});
+		
+		//console.log(trabalhos)
+		//return res.send({ status: 0, trabalhos: trabalhos.concat(videos) });
+	//},
+
 	list: async (req, res) => {
-		const trabalhos = await Trabalho.list(res.locals.connection);
+		const trabalhos = JSON.parse(fs.readFileSync('/var/www/src/acervo/backend/src/database/seeds/trabalhos.json'));
+		const videos = JSON.parse(fs.readFileSync('/var/www/src/acervo/backend/src/database/seeds/videos.json'));
 		if (!trabalhos) return res.status(404).send({
 			status: 1, message: 'Nenhum trabalho cadastrado'
 		});
-		return res.send({ status: 0, trabalhos: trabalhos });
+		
+		return res.send({ status: 0, trabalhos: trabalhos.concat(videos) });
+	},
+
+	listVideos: async (req, res) => {
+		const videos = JSON.parse(fs.readFileSync('/var/www/src/acervo/backend/src/database/seeds/videos.json'));
+		if (!videos) return res.status(404).send({
+			status: 1, message: 'Nenhum trabalho cadastrado'
+		});
+		
+		return res.send({ status: 0, trabalhos: videos });
 	},
 
 	getById: async (req, res) => {

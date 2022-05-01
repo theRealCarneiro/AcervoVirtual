@@ -44,6 +44,7 @@ routes.delete('/trabalhos/:id', auth.verifyToken, TrabalhoController.delete);
 routes.patch('/trabalhos/:id', auth.verifyToken, TrabalhoController.update);
 
 // Lista trabalhos
+routes.get('/videos', TrabalhoController.listVideos);
 routes.get('/trabalhos', TrabalhoController.list);
 routes.get('/trabalhos/:id', TrabalhoController.getById);
 

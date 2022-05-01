@@ -5,6 +5,10 @@ class Trabalho {
         return connection(Trabalho.table());
     }
 
+	static listVideos (connection) {
+		return connection('videos');
+	}
+
     static getById (connection, id) {
         return connection(Trabalho.table()).where({ id: id });
     }
