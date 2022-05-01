@@ -6,6 +6,7 @@ export class Acervo{
 	id!: number;
 	titulo!: string;
 	autor!: string;
+	equipe!: string;
 	generoDocumental!: string;
 	tipoDocumental!: string;
 	apresentacaoGrafica!: string;
@@ -41,11 +42,19 @@ export class AcervoService {
 	}
 
 	// getTrabalhos(): Observable<Acervo[]> {
-	getTrabalhos(trabalho: any): Observable<any> {
+	getTextos(trabalho: any): Observable<any> {
 		if (trabalho) {
 			return this.http.put(this.host + '/trabalhos', { trabalho });
+			//return this.http.get(this.host + '/videos');
 		}
 		return this.http.get(this.host + '/trabalhos');
+	}
+
+	getTrabalhos(type: any): Observable<any> {
+		if (type == null) {
+			return this.http.get(this.host + '/trabalhos');
+		}
+		return this.http.get(this.host + '/' + type);
 	}
 
 	getTrabalho(id: number): Observable<any> {

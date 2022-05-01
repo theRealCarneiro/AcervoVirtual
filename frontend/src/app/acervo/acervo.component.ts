@@ -41,8 +41,9 @@ export class AcervoComponent implements OnInit, AfterViewInit {
 			case 'videos':
 				this.title = 'Vídeos';
 				this.downloadButton = false;
-				trabalho = new Acervo();
-				trabalho.tipoDocumental = 'Vídeo';
+				trabalho = 'videos';
+				//trabalho = new Acervo();
+				//trabalho.tipoDocumental = 'Vídeo';
 				break;
 		}
 

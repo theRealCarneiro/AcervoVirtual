@@ -48,11 +48,16 @@ export class MngAdminDialogComponent {
 export class MngAcervoDialogComponent implements OnInit {
 	constructor(public dialogRef: MatDialogRef<MngAcervoDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Acervo) {}
 	public video = false;
+	public mapa = false;
 	public link = '';
 
 	ngOnInit(): void{
-		if (this.data.tipoDocumental === 'Vídeo'){
+		if (this.data.tipoDocumental === 'video'){
 			this.video = true;
+			this.link = this.data.link.substring(32);
+		}
+		else if (this.data.tipoDocumental === 'Mapa'){
+			this.mapa = true;
 			this.link = this.data.link.substring(32);
 		}
 	}
