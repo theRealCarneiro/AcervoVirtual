@@ -54,11 +54,13 @@ export class MngAcervoDialogComponent implements OnInit {
 	ngOnInit(): void{
 		if (this.data.tipoDocumental === 'video'){
 			this.video = true;
-			this.link = this.data.link.substring(32);
+			this.link = this.data.link.substring(30);
+			//this.link = 'JWkARHxYY'
+			console.log(this.link)
 		}
 		else if (this.data.tipoDocumental === 'Mapa'){
 			this.mapa = true;
-			this.link = this.data.link.substring(32);
+			//this.link = this.data.link.substring(32);
 		}
 	}
 
