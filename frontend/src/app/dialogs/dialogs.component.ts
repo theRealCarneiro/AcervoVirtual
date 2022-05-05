@@ -55,12 +55,9 @@ export class MngAcervoDialogComponent implements OnInit {
 		if (this.data.tipoDocumental === 'video'){
 			this.video = true;
 			this.link = this.data.link.substring(30);
-			//this.link = 'JWkARHxYY'
-			console.log(this.link)
 		}
 		else if (this.data.tipoDocumental === 'Mapa'){
 			this.mapa = true;
-			//this.link = this.data.link.substring(32);
 		}
 	}
 

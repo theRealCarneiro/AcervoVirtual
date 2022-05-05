@@ -50,6 +50,10 @@ export class AcervoService {
 		return this.http.get(this.host + '/trabalhos');
 	}
 
+	//getJsonBD(): Observable<Acervo[]> {
+		//return this.http.get<Acervo[]>('/acervo/assets/bd/bd.json');
+	//}
+
 	getTrabalhos(type: any): Observable<any> {
 		if (type == null) {
 			return this.http.get(this.host + '/trabalhos');

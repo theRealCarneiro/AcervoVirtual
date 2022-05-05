@@ -8,6 +8,10 @@
 	<h3><b>Autor: </b> {{data.autor}}</h3>
   </div>
 
+  <div *ngIf='data.equipe'class="row">
+	<h3><b>Equipe: </b> {{data.equipe}}</h3>
+  </div>
+
   <div *ngIf='data.generoDocumental' class="row">
 	<h3><b>Gênero Documental: </b> {{data.generoDocumental}}</h3>
   </div>
