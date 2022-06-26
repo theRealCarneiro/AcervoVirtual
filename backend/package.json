@@ -5,6 +5,8 @@
 	"main": "app.js",
 	"scripts": {
 		"start": "nodemon app.js",
+		"new-migration": "knex migrate:make $1 --knexfile=./knexfile.js",
+		"migrate-latest": "knex migrate:latest --knexfile=./knexfile.js",
 		"test": "jest"
 	},
 	"dependencies": {
